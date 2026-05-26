@@ -1,0 +1,8 @@
+[
+  {"key": "opensource.item1", "linkCode": "https://github.com/sqking-coke/spring-ai-agent-starter", "linkDoc": null},
+  {"key": "opensource.item2", "linkCode": "https://github.com/sqking-coke/java-rag-framework", "linkDoc": "https://github.com/sqking-coke/java-rag-framework/wiki"},
+  {"key": "opensource.item3", "linkCode": "https://github.com/sqking-coke/llm-tool-calling-sdk", "linkDoc": null},
+  {"key": "opensource.item4", "linkCode": "https://github.com/sqking-coke/api-auto-test-framework", "linkDoc": null},
+  {"key": "opensource.item5", "linkCode": "https://github.com/sqking-coke/smart-workorder-engine", "linkDoc": "https://github.com/sqking-coke/smart-workorder-engine/wiki"},
+  {"key": "opensource.item6", "linkCode": "https://github.com/sqking-coke/code-quality-analyzer", "linkDoc": null}
+]

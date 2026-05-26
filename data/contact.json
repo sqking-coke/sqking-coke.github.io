@@ -1,0 +1,6 @@
+[
+  {"icon": "fab fa-github", "key": "contact.github", "link": "https://github.com/sqking-coke"},
+  {"icon": "fas fa-book-open", "key": "contact.xiaohongshu", "link": "https://www.xiaohongshu.com/user/profile/603f59e20000000001007792"},
+  {"icon": "fab fa-x-twitter", "key": "contact.x", "link": "https://x.com/sqkingcoke"},
+  {"icon": "fas fa-rss", "key": "contact.rss", "link": "https://sqking-coke.github.io/feed.xml"}
+]

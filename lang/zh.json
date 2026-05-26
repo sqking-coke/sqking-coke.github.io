@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "home": "首页",
+    "projects": "个人项目",
+    "opensource": "开源贡献",
+    "timeline": "时间轴",
+    "skills": "技术栈",
+    "contact": "联系我",
+    "documents": "文档"
+  },
+  "intro": {
+    "avatarAlt": "sqking-coke 的头像",
+    "title": "你好，我是 Coke",
+    "desc": "公众号：Coke 笔记<br>GAP · Vibe Coding · AI Agent<br>一枚 Java 码农｜转型 AI Agent 开发<br>分享实战项目 | 源码 | 框架 | 工具教程 | 求职面经 | 简历优化<br>邮箱：359100378@qq.com"
+  },
+  "projects": {
+    "title": "个人项目",
+    "imgAlt": "项目图片",
+    "viewDetail": "查看详情",
+    "item1": {
+      "title": "业务数据智能查询 Agent（NL2SQL）",
+      "desc": "Java 后端转 AI Agent 最优入门项目。基于 SpringBoot 原生开发，自然语言输入 → AI 自动生成 SQL → 安全执行 → 可视化报表。核心掌握大模型 API 调用、Prompt 工程、五重 SQL 安全防线与 SSE 流式响应，零基础最快出效果。",
+      "tags": ["Java", "AI Agent", "LLM", "Tool Calling"]
+    },
+    "item2": {
+      "title": "接口自动化巡检 Agent",
+      "desc": "后端运维刚需工具。批量读取接口清单 → AI 自动生成测试用例 → 并发巡检 + 智能断言 → 异常归因分析 → 巡检报告 + 告警推送。核心掌握 CompletableFuture 异步编排、线程池隔离、超时熔断重试三层容错机制。",
+      "tags": ["Java", "AI Agent", "API Testing", "Automation", "Monitoring"]
+    },
+    "item3": {
+      "title": "智能工单处理 Agent",
+      "desc": "企业 OA/客服/运维智能化改造核心项目。首次引入轻量 RAG + 意图识别 + 业务状态机流转。核心链路：工单智能分类 → 实体抽取 → 自动分派 → 历史知识库检索答疑 → 工单状态机流转 → 复盘统计。",
+      "tags": ["Java", "AI Agent", "NLP", "Knowledge Base", "Workflow"]
+    },
+    "item4": {
+      "title": "代码智能审查 Agent",
+      "desc": "Java 后端专属、面试极度加分的垂直场景 Agent。规则引擎（JavaParser AST 静态审查）+ LLM 语义深度审查双模架构，覆盖安全漏洞、性能问题、资源泄露、代码规范四大维度，自动输出优化 Diff + 修改建议 + 质量评分。",
+      "tags": ["Java", "AI Agent", "Code Review", "RAG", "Security"]
+    },
+    "item5": {
+      "title": "多 Agent 协同办公系统（规划中）",
+      "desc": "从单 Agent 开发跨越到多智能体集群架构的分水岭项目。调度 Agent 统一入口 → 意图解析 → 任务拆解 → 分发到子 Agent（数据/文案/审批/检索等）→ 结果聚合与冲突消解。核心掌握 DAG 任务编排、Agent 注册与发现、串行依赖与并行调度。",
+      "tags": ["Java", "Multi-Agent", "Orchestrator", "DAG", "Pluggable"]
+    },
+    "item6": {
+      "title": "本地私有知识库问答 Agent（规划中）",
+      "desc": "整套学习路线技术天花板、企业级 RAG 完整落地项目。全链路 RAG Pipeline：多格式文档加载 → 智能分块 → 向量化存储 → 混合检索（BM25+向量+RRF 融合）→ 重排序 → 答案生成+来源溯源。支持 Ollama + Qwen3 本地模型完全离线运行，纯正私有化无数据外泄。",
+      "tags": ["Java", "RAG", "Vector DB", "Local LLM", "Private Deploy"]
+    }
+  },
+  "project1": {
+    "title": "业务数据智能查询 Agent（NL2SQL）— Level 1 入门",
+    "desc": "AI 数据查询 Agent 是一个 Java 后端入门级 AI Agent 项目，旨在帮助开发者彻底理解 AI Agent 的三大核心原理：大模型推理、工具调用（Tool Calling）与任务闭环调度。<br><br>项目特点：<br>1）原生手写核心逻辑，不依赖 LangChain 等重型 AI 框架；<br>2）纯 Java 后端工程化实现，适合 Spring Boot 技术栈开发者；<br>3）代码结构清晰，注释完善，适合作为 AI Agent 学习起点。<br><br>核心流程：用户自然语言提问 → LLM 理解意图 → 自动选择数据查询工具 → 执行 SQL/API 查询 → 结果整理与返回 → 任务闭环。适合改造为企业内部智能数据助手或自动报表系统。",
+    "links": {
+      "github": "开源代码"
+    }
+  },
+  "project2": {
+    "title": "接口自动化巡检 Agent — Level 2 进阶",
+    "desc": "API 自动化巡检 Agent 是 Java 原生实现的接口自动化巡检工具，不依赖任何重型 AI 框架，纯后端工程化架构。<br><br>核心能力：<br>1）接口批量调用：支持 RESTful/gRPC 接口的定时批量调用与并发控制；<br>2）智能断言：基于 AI 自动生成断言规则，支持响应码、响应体结构、字段类型等多维度校验；<br>3）异常捕获与重试容错：网络超时、服务不可用等异常场景的自动重试与降级策略；<br>4）AI 根因分析：巡检失败时自动分析日志与错误信息，给出可能的根因；<br>5）自动生成巡检报告与异常告警：支持钉钉/飞书/邮件多渠道通知。<br><br>可作为中小团队接口质量保障的基础设施组件。",
+    "links": {
+      "github": "开源代码",
+      "techDoc": "技术文档"
+    }
+  },
+  "project3": {
+    "title": "智能工单处理 Agent — Level 3 业务落地",
+    "desc": "智能工单处理 Agent 是 Java 原生实现的智能工单运维系统，摒弃重型 AI 框架，基于后端工程化思想构建。<br><br>核心链路：<br>1）工单智能分类：基于 LLM 自动识别工单类型（Bug/需求/咨询/故障）；<br>2）实体信息抽取：从工单文本中提取关键实体（系统、模块、版本、用户等）；<br>3）自动责任分派：根据分类与实体信息自动指派处理人；<br>4）知识库智能答疑：基于 RAG 技术从历史工单和文档中检索相似案例，自动生成回复建议；<br>5）复杂工单流转：支持多级审批、跨团队协作的工单流转；<br>6）异常根因分析与复盘总结：故障类工单自动关联监控数据，辅助根因定位。<br><br>项目场景真实、技术亮点突出，可直接改造落地为企业内部智能工单运维系统。",
+    "links": {
+      "github": "开源代码",
+      "techDoc": "技术文档"
+    }
+  },
+  "project4": {
+    "title": "代码智能审查 Agent — Level 4 垂直深耕",
+    "desc": "代码智能审查 Agent 是本系列最复杂的项目，Java 原生实现，无重型 AI 框架依赖，完成代码审查的完整自动化闭环。<br><br>审查管线：<br>1）代码接收：支持 Git 仓库、PR diff、代码片段等多种输入方式；<br>2）语法规范校验：基于 AST 解析的 Java 代码规范检查（命名、格式、注释等）；<br>3）语义智能审查：LLM 驱动的代码逻辑分析，检查潜在 Bug、逻辑漏洞、边界条件遗漏；<br>4）RAG 知识增强：结合项目内部编码规范、最佳实践文档进行上下文感知的审查；<br>5）安全漏洞检测：SQL 注入、XSS、敏感信息泄露等 OWASP Top 10 漏洞扫描；<br>6）性能分析：识别 N+1 查询、内存泄漏、不当的集合使用等性能问题；<br>7）代码优化建议：基于设计模式的代码重构建议；<br>8）结构化报告生成：Markdown/HTML/PDF 多格式审查报告输出。<br><br>替代传统人工 Code Review，实现代码审查的标准化、智能化、自动化。",
+    "links": {
+      "github": "开源代码",
+      "techDoc": "技术文档"
+    }
+  },
+  "project5": {
+    "title": "多 Agent 协同办公系统 — Level 5 架构协同",
+    "desc": "多 Agent 协同办公系统是从单 Agent 开发跨越到多智能体集群架构的分水岭项目。<br><br>核心架构：<br>1）调度 Agent（Orchestrator）：统一任务入口，意图识别 → 任务拆解 → 分发子 Agent → 结果聚合与冲突消解；<br>2）数据 Agent：NL2SQL 查询 + 报表统计 + 趋势分析；<br>3）文案 Agent：周报生成 + 通知公告 + 公文撰写；<br>4）审批 Agent：规则判断 + 流程审批 + 权限校验 + 合规检查。<br><br>技术亮点：基于 DAG 拓扑执行的任务编排引擎，支持串行依赖与并行执行；可插拔 Agent 注册机制（基于接口 + 注解，新增 Agent 只需实现接口）；多用户会话隔离 + 任务状态追踪。<br><br>🔨 该项目正在规划中，敬请期待。",
+    "links": {
+      "github": "开源代码（即将发布）"
+    }
+  },
+  "project6": {
+    "title": "本地私有知识库问答 Agent — Level 6 技术天花板",
+    "desc": "本地私有知识库问答 Agent 是整套学习路线的技术天花板，也是工业界 AI 落地最核心、最值钱的技术方案。<br><br>完整 RAG Pipeline：<br>1）文档加载：支持 PDF、Word、Markdown、TXT、HTML 多格式；<br>2）智能分块：标题感知 + 语义边界 + 可配置重叠窗口；<br>3）向量化存储：本地 SQLite + 向量表 / 内存映射文件方案；<br>4）混合检索：BM25 关键词 + 向量语义检索 + RRF 加权融合；<br>5）重排序：Cross-encoder / LLM Rerank 精排；<br>6）答案生成：Prompt 拼接 + 来源引用标注 + 幻觉校验 + 流式输出。<br><br>系统能力：支持 Ollama + Qwen3-8B 本地模型完全离线运行，可选云端模型降级，知识库增删改查 + 增量索引更新，多轮对话上下文管理。<br><br>🔨 该项目正在规划中，敬请期待。",
+    "links": {
+      "github": "开源代码（即将发布）"
+    }
+  },
+  "projects1": {
+    "imgAlt1": "项目展示图",
+    "imgAlt2": "细节展示图 1",
+    "imgAlt3": "细节展示图 2",
+    "imgAlt4": "细节展示图 3"
+  },
+  "opensource": {
+    "title": "开源贡献",
+    "btnCode": "代码仓库",
+    "btnDoc": "在线文档",
+    "item1": {
+      "title": "Spring AI Agent Starter",
+      "desc": "基于 Spring Boot 的 AI Agent 快速启动器，封装 LLM 调用、工具注册、任务编排等核心能力，帮助开发者 5 分钟搭建第一个 AI Agent 应用。",
+      "tags": ["Spring Boot", "AI Agent", "Starter", "Auto Configuration"]
+    },
+    "item2": {
+      "title": "Java RAG Framework",
+      "desc": "轻量级 Java RAG（检索增强生成）框架，支持多种向量数据库（Milvus/Pinecone/Elasticsearch），提供文档解析、向量化、检索、生成的一站式 RAG 解决方案。",
+      "tags": ["Java", "RAG", "Vector DB", "Embedding", "LLM"]
+    },
+    "item3": {
+      "title": "LLM Tool Calling SDK",
+      "desc": "Java 原生 LLM 工具调用 SDK，支持 OpenAI/Claude/DeepSeek 等多种模型，提供工具注册、Schema 自动生成、调用结果解析等功能，让 LLM 与现有业务系统无缝集成。",
+      "tags": ["Java", "LLM", "Tool Calling", "SDK", "Multi-Model"]
+    },
+    "item4": {
+      "title": "API Auto Test Framework",
+      "desc": "Java 接口自动化测试框架，基于注解驱动，支持 HTTP/gRPC/WebSocket 多协议，集成 AI 断言生成与智能失败重试，适合微服务架构下的接口测试场景。",
+      "tags": ["Java", "Testing", "API", "Automation", "gRPC"]
+    },
+    "item5": {
+      "title": "Smart Work Order Engine",
+      "desc": "智能工单引擎核心库，提供可嵌入的工单流程引擎，支持自定义流程编排、条件分支、并行审批与 SLA 管理，内置 AI 驱动的工单分类与推荐能力。",
+      "tags": ["Java", "Workflow", "Engine", "AI", "SLA"]
+    },
+    "item6": {
+      "title": "Code Quality Analyzer",
+      "desc": "Java 代码质量分析工具库，支持 AST 级别的代码检查、圈复杂度分析、代码异味检测与自动修复建议，可集成到 CI/CD 流水线作为质量门禁。",
+      "tags": ["Java", "Code Quality", "AST", "CI/CD", "Static Analysis"]
+    }
+  },
+  "timeline": {
+    "title": "经历时间轴",
+    "event1": {
+      "date": "2019.05 - 2020.05",
+      "title": "技术支持（实习）",
+      "desc": "对接 OMS/WMS 业务需求，负责公司软硬件机房日常维护，协同各项目组处理订单异常，保障业务正常运行。"
+    },
+    "event2": {
+      "date": "2020.07 - 2021.05",
+      "title": "Java 开发工程师（精易会）",
+      "desc": "参与智能制造 MOM 平台及智能化测试平台研发，负责品质管控、产品批次、设备管理、刀具管理、点检管理等模块开发，以及数据采集与公共基础服务建设。"
+    },
+    "event3": {
+      "date": "2021.06 - 2026.04",
+      "title": "Java 开发工程师（翼支付）",
+      "desc": "负责 o2o 聚合支付业务迭代，参与智能终端盒子业务升级（钱到啦 & 支付宝）；负责金融网络银行网关平台开发与维护，对接银联、网联支付通道，涵盖快捷支付、代收代付、签约、退款等核心能力。参与网关迁移新一代平台、国密改造、安全升级及日常运维优化。"
+    },
+    "event4": {
+      "date": "2026.04 - 至今",
+      "title": "AI Agent 学习与开源项目",
+      "desc": "业余学习 LLM、RAG、Agent、Function Calling 等技术方向。从零搭建 6 套 Java 原生 AI Agent 实战项目，由浅入深覆盖 NL2SQL、接口巡检、工单处理、代码审查等场景，记录 Java 转 Agent 完整学习路径。"
+    },
+    "event5": {
+      "date": "2026.05 - 至今",
+      "title": "GAP · 专注 AI Agent 与内容输出",
+      "desc": "GAP 期间专注 AI Agent 技术深耕，运营公众号「Coke 笔记」，分享实战项目、源码解析、框架教程、求职面经、Vibe Coding 经验。"
+    }
+  },
+  "skills": {
+    "title": "技术栈",
+    "backend": "后端框架",
+    "middleware": "中间件与数据",
+    "ai": "AI / LLM",
+    "devops": "DevOps"
+  },
+  "contact": {
+    "title": "联系我",
+    "github": "代码仓库",
+    "xiaohongshu": "小红书",
+    "x": "X",
+    "rss": "RSS 订阅"
+  },
+  "footer": {
+    "copyright": "© 2019-2026 sqking-coke | 个人主页"
+  }
+}

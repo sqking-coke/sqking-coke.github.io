@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Portfolio",
+    "opensource": "Open Source",
+    "timeline": "Timeline",
+    "skills": "Tech Stack",
+    "contact": "Contact",
+    "documents": "Docs"
+  },
+  "intro": {
+    "avatarAlt": "sqking-coke's avatar",
+    "title": "Hello, I'm Coke",
+    "desc": "WeChat: Coke 笔记<br>GAP · Vibe Coding · AI Agent<br>A Java dev | Transitioning to AI Agent<br>Sharing projects | source | frameworks | tutorials | interview tips | resume tips<br>Email: 359100378@qq.com"
+  },
+  "projects": {
+    "title": "My Projects",
+    "imgAlt": "Project image",
+    "viewDetail": "View Details",
+    "item1": {
+      "title": "NL2SQL Data Query Agent (Level 1)",
+      "desc": "The best entry point for Java devs transitioning to AI Agent. SpringBoot native — natural language input → AI generates SQL → safe execution → visualized reports. Master LLM API calls, Prompt engineering, 5-layer SQL security, and SSE streaming.",
+      "tags": ["Java", "AI Agent", "LLM", "Tool Calling"]
+    },
+    "item2": {
+      "title": "API Inspection Agent (Level 2)",
+      "desc": "Essential ops tool for backend teams. Batch read API endpoints → AI generates test cases → concurrent inspection + smart assertions → anomaly analysis → reports + alert push. Master CompletableFuture async orchestration, thread pool isolation, and retry/circuit-breaker patterns.",
+      "tags": ["Java", "AI Agent", "API Testing", "Automation", "Monitoring"]
+    },
+    "item3": {
+      "title": "Work Order Agent (Level 3)",
+      "desc": "Core project for enterprise OA/customer service/ops modernization. First introduction of lightweight RAG + intent recognition + business state machine. Pipeline: smart classification → entity extraction → auto-assignment → knowledge base retrieval → state machine flow → analytics.",
+      "tags": ["Java", "AI Agent", "NLP", "Knowledge Base", "Workflow"]
+    },
+    "item4": {
+      "title": "Code Review Agent (Level 4)",
+      "desc": "Java-dev exclusive, high-impact interview differentiator. Dual-mode architecture: rule engine (JavaParser AST static analysis) + LLM semantic deep review. Covers security vulnerabilities, performance issues, resource leaks, and code standards — with auto-generated optimization diffs and quality scoring.",
+      "tags": ["Java", "AI Agent", "Code Review", "RAG", "Security"]
+    },
+    "item5": {
+      "title": "Multi-Agent Collaboration System (Planning)",
+      "desc": "The watershed project bridging single-Agent to multi-agent cluster architecture. Orchestrator Agent as unified entry → intent parsing → task decomposition → dispatch to sub-agents (Data/Document/Approval/Retrieval) → result aggregation & conflict resolution. Master DAG task orchestration, Agent registry & discovery, serial dependency & parallel scheduling.",
+      "tags": ["Java", "Multi-Agent", "Orchestrator", "DAG", "Pluggable"]
+    },
+    "item6": {
+      "title": "Local Private RAG Knowledge Base (Planning)",
+      "desc": "The ultimate capstone of the learning roadmap — enterprise-grade full RAG pipeline. End-to-end: multi-format doc loading → intelligent chunking → vector embedding → hybrid search (BM25 + vector + RRF fusion) → rerank → answer generation with citations. Supports Ollama + Qwen3 local model for fully offline, private deployment with zero data leakage.",
+      "tags": ["Java", "RAG", "Vector DB", "Local LLM", "Private Deploy"]
+    }
+  },
+  "project1": {
+    "title": "NL2SQL Data Query Agent — Level 1 Entry Point",
+    "desc": "The AI Data Query Agent is an entry-level Java AI Agent designed to help developers deeply understand the three core principles: LLM reasoning, Tool Calling, and task orchestration.<br><br>Key features:<br>1) Hand-written core logic with no dependencies on heavy frameworks like LangChain;<br>2) Pure Java backend implementation, ideal for Spring Boot developers;<br>3) Clean, well-commented code structured as an ideal learning path.<br><br>Core flow: natural language query → LLM intent understanding → automatic tool selection → SQL/API query execution → result formatting → task completion. Adaptable as an enterprise data assistant or automated reporting system.",
+    "links": {
+      "github": "Source Code"
+    }
+  },
+  "project2": {
+    "title": "API Inspection Agent — Level 2 Automation",
+    "desc": "The API Inspection Agent is a Java-native automated API quality monitoring tool built with pure backend engineering architecture, free of heavy AI framework dependencies.<br><br>Core capabilities:<br>1) Batch API calls: scheduled concurrent invocation for RESTful/gRPC endpoints;<br>2) Smart assertions: AI-generated assertion rules covering status codes, response structure, and field types;<br>3) Exception handling & retry: automatic retry with fallback for timeouts and service unavailability;<br>4) AI root cause analysis: automatic log and error analysis on inspection failures;<br>5) Automated reports & alerts: multi-channel notifications via DingTalk, Feishu, or email.<br><br>Ready to serve as infrastructure for small to mid-size team API quality assurance.",
+    "links": {
+      "github": "Source Code",
+      "techDoc": "Documentation"
+    }
+  },
+  "project3": {
+    "title": "Work Order Agent — Level 3 Business Integration",
+    "desc": "The Work Order Agent is a Java-native intelligent ticket management system built on backend engineering principles without heavy AI frameworks.<br><br>Core pipeline:<br>1) Smart classification: LLM-based identification of ticket type (bug, feature, inquiry, incident);<br>2) Entity extraction: key entities from ticket text (system, module, version, user);<br>3) Auto-assignment: automatic routing based on classification and entities;<br>4) Knowledge base Q&A: RAG-powered retrieval of similar cases and auto-generated response suggestions;<br>5) Complex workflows: multi-level approvals and cross-team collaboration;<br>6) Root cause analysis & post-mortems: incident tickets automatically correlated with monitoring data.<br><br>Production-ready for internal enterprise deployment as an intelligent work order system.",
+    "links": {
+      "github": "Source Code",
+      "techDoc": "Documentation"
+    }
+  },
+  "project4": {
+    "title": "Code Review Agent — Level 4 Vertical Deep Dive",
+    "desc": "The Code Review Agent is the most advanced project in the series — a Java-native implementation with no heavy AI framework dependencies that achieves a fully automated code review pipeline.<br><br>Review pipeline:<br>1) Code intake: Git repos, PR diffs, code snippets via multiple input methods;<br>2) Syntax & style checks: AST-based Java code style analysis (naming, formatting, comments);<br>3) Semantic review: LLM-driven logic analysis for potential bugs, logic holes, and missing boundary conditions;<br>4) RAG-enhanced analysis: context-aware review using internal coding standards and best practice docs;<br>5) Vulnerability detection: OWASP Top 10 scanning for SQL injection, XSS, sensitive data exposure;<br>6) Performance analysis: N+1 queries, memory leaks, improper collection usage;<br>7) Code optimization: design pattern-based refactoring suggestions;<br>8) Structured reports: Markdown/HTML/PDF multi-format report output.<br><br>Replaces traditional manual code review with standardized, intelligent, automated processes.",
+    "links": {
+      "github": "Source Code",
+      "techDoc": "Documentation"
+    }
+  },
+  "project5": {
+    "title": "Multi-Agent Collaboration System — Level 5 Architecture",
+    "desc": "The Multi-Agent Collaboration System is the watershed project bridging single-Agent development to multi-agent cluster architecture.<br><br>Core architecture:<br>1) Orchestrator Agent: unified task entry, intent recognition → task decomposition → sub-agent dispatch → result aggregation & conflict resolution;<br>2) Data Agent: NL2SQL queries + report statistics + trend analysis;<br>3) Document Agent: weekly report generation + notifications + document drafting;<br>4) Approval Agent: rule-based judgment + process approval + permission checks + compliance.<br><br>Technical highlights: DAG topology-based task orchestration engine supporting serial dependencies and parallel execution; pluggable Agent registration mechanism (interface + annotation based, new Agents just implement the interface); multi-user session isolation + task status tracking.<br><br>🔨 This project is under planning. Stay tuned.",
+    "links": {
+      "github": "Source Code (Coming Soon)"
+    }
+  },
+  "project6": {
+    "title": "Local Private RAG Knowledge Base — Level 6 Capstone",
+    "desc": "The Local Private RAG Knowledge Base is the ultimate capstone of the learning roadmap and the most valuable, core industrial AI deployment pattern.<br><br>Complete RAG Pipeline:<br>1) Document loading: PDF, Word, Markdown, TXT, HTML multi-format support;<br>2) Intelligent chunking: heading-aware + semantic boundary + configurable overlap window;<br>3) Vector storage: local SQLite + vector table / memory-mapped file approach;<br>4) Hybrid retrieval: BM25 keyword + vector semantic search + RRF weighted fusion;<br>5) Reranking: Cross-encoder / LLM Rerank fine ranking;<br>6) Answer generation: Prompt assembly + source citation + hallucination checking + streaming output.<br><br>System capabilities: supports Ollama + Qwen3-8B local model for fully offline operation with optional cloud model fallback; knowledge base CRUD + incremental index updates; multi-turn conversation context management.<br><br>🔨 This project is under planning. Stay tuned.",
+    "links": {
+      "github": "Source Code (Coming Soon)"
+    }
+  },
+  "projects1": {
+    "imgAlt1": "Project Detail View",
+    "imgAlt2": "Detail View 1",
+    "imgAlt3": "Detail View 2",
+    "imgAlt4": "Detail View 3"
+  },
+  "opensource": {
+    "title": "Open Source Contributions",
+    "btnCode": "Code",
+    "btnDoc": "Docs",
+    "item1": {
+      "title": "Spring AI Agent Starter",
+      "desc": "A Spring Boot starter for rapid AI Agent development. Encapsulates LLM invocation, tool registration, and task orchestration, enabling developers to build their first AI Agent in 5 minutes.",
+      "tags": ["Spring Boot", "AI Agent", "Starter", "Auto Configuration"]
+    },
+    "item2": {
+      "title": "Java RAG Framework",
+      "desc": "A lightweight Java RAG (Retrieval-Augmented Generation) framework supporting multiple vector databases (Milvus, Pinecone, Elasticsearch). Provides a one-stop RAG solution covering document parsing, embedding, retrieval, and generation.",
+      "tags": ["Java", "RAG", "Vector DB", "Embedding", "LLM"]
+    },
+    "item3": {
+      "title": "LLM Tool Calling SDK",
+      "desc": "A Java-native LLM tool calling SDK supporting OpenAI, Claude, DeepSeek, and more. Features tool registration, automatic schema generation, and result parsing, enabling seamless LLM integration with existing business systems.",
+      "tags": ["Java", "LLM", "Tool Calling", "SDK", "Multi-Model"]
+    },
+    "item4": {
+      "title": "API Auto Test Framework",
+      "desc": "An annotation-driven Java API testing framework supporting HTTP, gRPC, and WebSocket protocols. Integrates AI-powered assertion generation and intelligent retry on failure, ideal for microservice testing scenarios.",
+      "tags": ["Java", "Testing", "API", "Automation", "gRPC"]
+    },
+    "item5": {
+      "title": "Smart Work Order Engine",
+      "desc": "An embeddable workflow engine core library featuring customizable process orchestration, conditional branching, parallel approvals, and SLA management, with built-in AI-driven ticket classification and recommendations.",
+      "tags": ["Java", "Workflow", "Engine", "AI", "SLA"]
+    },
+    "item6": {
+      "title": "Code Quality Analyzer",
+      "desc": "A Java code quality analysis toolkit supporting AST-level inspections, cyclomatic complexity analysis, code smell detection, and auto-fix suggestions. Integrates into CI/CD pipelines as a quality gate.",
+      "tags": ["Java", "Code Quality", "AST", "CI/CD", "Static Analysis"]
+    }
+  },
+  "timeline": {
+    "title": "Timeline",
+    "event1": {
+      "date": "2019.05 - 2020.05",
+      "title": "Technical Support (Internship)",
+      "desc": "Provided OMS/WMS business support, maintained server room hardware and software, and coordinated with project teams on order exception handling to ensure smooth daily operations."
+    },
+    "event2": {
+      "date": "2020.07 - 2021.05",
+      "title": "Java Developer (JingYiHui)",
+      "desc": "Participated in MOM platform and intelligent testing platform development. Built modules for quality control, product batch tracking, equipment management, tooling management, and inspection management, along with data collection and shared infrastructure services."
+    },
+    "event3": {
+      "date": "2021.06 - 2026.04",
+      "title": "Java Developer (BestPay)",
+      "desc": "Worked on o2o aggregate payment business iteration, participated in smart terminal box business upgrades (Qiandaola & Alipay). Developed and maintained the bank payment gateway platform, integrating UnionPay and NUCC payment channels covering express payment, collection, disbursement, contract signing, and refunds. Participated in next-gen platform migration, cryptographic upgrades, and security hardening."
+    },
+    "event4": {
+      "date": "2026.04 - Present",
+      "title": "AI Agent Learning & Open Source",
+      "desc": "Self-learning LLM, RAG, Agent patterns, and Function Calling. Built 6 Java-native AI Agent projects from scratch, progressively covering NL2SQL, API inspection, work order processing, and code review — documenting the complete Java-to-Agent journey."
+    },
+    "event5": {
+      "date": "2026.05 - Present",
+      "title": "Career Break · AI Agent & Content Creation",
+      "desc": "Deep-diving into AI Agent development during career break. Running the 'Coke 笔记' tech blog, sharing hands-on projects, source code walkthroughs, framework tutorials, interview guides, and Vibe Coding tips."
+    }
+  },
+  "skills": {
+    "title": "Tech Stack",
+    "backend": "Backend Frameworks",
+    "middleware": "Middleware & Data",
+    "ai": "AI / LLM",
+    "devops": "DevOps"
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "github": "GitHub",
+    "xiaohongshu": "Xiaohongshu",
+    "x": "X",
+    "rss": "RSS Feed"
+  },
+  "footer": {
+    "copyright": "© 2019-2026 sqking-coke | Personal Homepage"
+  }
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "category": "skills.backend",
+    "items": [
+      {"name": "Spring Boot", "icon": "fas fa-leaf"},
+      {"name": "Spring Cloud", "icon": "fas fa-cloud"},
+      {"name": "MyBatis", "icon": "fas fa-database"},
+      {"name": "JPA / Hibernate", "icon": "fas fa-layer-group"},
+      {"name": "gRPC", "icon": "fas fa-network-wired"},
+      {"name": "RESTful API", "icon": "fas fa-plug"}
+    ]
+  },
+  {
+    "category": "skills.middleware",
+    "items": [
+      {"name": "MySQL", "icon": "fas fa-database"},
+      {"name": "PostgreSQL", "icon": "fas fa-database"},
+      {"name": "Redis", "icon": "fas fa-bolt"},
+      {"name": "RabbitMQ", "icon": "fas fa-envelope"},
+      {"name": "Kafka", "icon": "fas fa-stream"},
+      {"name": "Elasticsearch", "icon": "fas fa-search"}
+    ]
+  },
+  {
+    "category": "skills.ai",
+    "items": [
+      {"name": "LangChain4j", "icon": "fas fa-brain"},
+      {"name": "Spring AI", "icon": "fas fa-robot"},
+      {"name": "Prompt Engineering", "icon": "fas fa-comment-dots"},
+      {"name": "RAG", "icon": "fas fa-book-open"},
+      {"name": "Function Calling", "icon": "fas fa-code-branch"}
+    ]
+  },
+  {
+    "category": "skills.devops",
+    "items": [
+      {"name": "Docker", "icon": "fab fa-docker"},
+      {"name": "Kubernetes", "icon": "fas fa-cubes"},
+      {"name": "Jenkins", "icon": "fab fa-jenkins"},
+      {"name": "GitLab CI", "icon": "fab fa-gitlab"},
+      {"name": "Nginx", "icon": "fas fa-server"},
+      {"name": "Prometheus", "icon": "fas fa-chart-line"}
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coke 笔记</title>
+    <link>https://sqking-coke.github.io</link>
+    <description>实战项目 · 源码解析 · 框架教程 · 求职面经 · Vibe Coding | Java 转 AI Agent 开发</description>
+    <language>zh-CN</language>
+    <atom:link href="https://sqking-coke.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+  </channel>
+</rss>

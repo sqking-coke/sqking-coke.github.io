@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — sqking-coke</title>
+  <script>
+    const t = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  </script>
+  <style>
+    :root { --bg:#f8fafc; --card:#fff; --hover:#f1f5f9; --text:#0f172a; --muted:#64748b; --pri:#2563eb; --border:rgba(0,0,0,0.08); --danger:#ef4444; --ok:#16a34a; --r:10px; --font:system-ui,-apple-system,sans-serif; }
+    [data-theme="dark"] { --bg:#1a1a1c; --card:#242526; --hover:#2d2f31; --text:#e8e9ea; --muted:#b0b3b8; --pri:#78a8f8; --border:rgba(255,255,255,0.1); --danger:#f87171; --ok:#4ade80; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);height:100vh;overflow:hidden}
+    button,input,textarea{font-family:inherit}
+    button{cursor:pointer}
+
+    .app{display:flex;height:100vh}
+    .sidebar{width:210px;flex-shrink:0;background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column}
+    .sidebar-head{padding:16px;border-bottom:1px solid var(--border)}
+    .sidebar-head h2{font-size:1rem;color:var(--pri)}
+    .sidebar-head .sub{font-size:.75rem;color:var(--muted);margin-top:2px}
+    .sidebar-nav{flex:1;overflow-y:auto;padding:8px 0}
+    .sidebar-nav button{display:flex;align-items:center;gap:8px;width:100%;padding:10px 16px;border:none;background:none;color:var(--muted);font-size:.88rem;text-align:left;transition:all .12s}
+    .sidebar-nav button:hover{color:var(--text);background:var(--hover)}
+    .sidebar-nav button.active{color:var(--pri);background:var(--hover);font-weight:600}
+    .sidebar-nav button .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:auto;display:none}
+    .sidebar-nav button.dirty .dot{display:block;background:#f59e0b}
+    .sidebar-foot{padding:12px 16px;border-top:1px solid var(--border)}
+
+    .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+    .topbar{display:flex;align-items:center;gap:12px;padding:10px 20px;background:var(--card);border-bottom:1px solid var(--border)}
+    .topbar .brand{font-weight:700;font-size:.95rem;color:var(--pri);margin-right:auto}
+    .topbar .hint{font-size:.78rem;color:var(--muted)}
+    .btn{padding:6px 14px;border-radius:6px;font-size:.82rem;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:500;white-space:nowrap;transition:all .12s}
+    .btn:hover{opacity:.8}
+    .btn-pri{background:var(--pri);color:#fff;border-color:var(--pri)}
+    .btn-ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+    .btn-danger{background:var(--danger);color:#fff;border-color:var(--danger)}
+    .btn-sm{padding:3px 10px;font-size:.76rem}
+
+    .workspace{flex:1;display:flex;overflow:hidden}
+    .list-panel{width:340px;flex-shrink:0;border-right:1px solid var(--border);overflow-y:auto;background:var(--bg)}
+    .list-panel-empty{padding:40px 20px;text-align:center;color:var(--muted)}
+    .list-item{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:all .1s}
+    .list-item:hover{background:var(--hover)}
+    .list-item.active{background:var(--hover);border-left:3px solid var(--pri)}
+    .list-item .info{flex:1;min-width:0}
+    .list-item .info .t{font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .list-item .info .s{font-size:.75rem;color:var(--muted)}
+    .list-item .actions{display:flex;gap:4px;flex-shrink:0;visibility:hidden}
+    .list-item:hover .actions{visibility:visible}
+    .list-item .reorder{display:flex;flex-direction:column;gap:2px;margin-right:4px}
+    .list-item .reorder button{background:none;border:none;color:var(--muted);font-size:.7rem;padding:0;line-height:1}
+    .list-item .reorder button:hover{color:var(--pri)}
+
+    .editor{flex:1;overflow-y:auto;padding:24px}
+    .editor-empty{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:.9rem}
+    .editor h3{font-size:1.1rem;margin-bottom:16px;color:var(--text)}
+    .form-group{margin-bottom:14px}
+    .form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+    .form-group label .resolved{font-weight:400;color:var(--ok);margin-left:6px;font-size:.75rem}
+    .form-group input,.form-group textarea{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:.88rem;background:var(--bg);color:var(--text)}
+    .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--pri)}
+    .form-group textarea{min-height:80px;resize:vertical}
+    .form-row{display:flex;gap:12px}
+    .form-row .form-group{flex:1}
+    .tag-row{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+    .tag-row input{flex:1}
+    .skill-items{display:flex;flex-direction:column;gap:6px}
+    .skill-item-row{display:flex;gap:8px;align-items:center}
+    .skill-item-row input{flex:1}
+    .skill-item-row input.icon{flex:0 0 160px}
+
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;display:flex;align-items:center;justify-content:center}
+    .modal{background:var(--card);border-radius:12px;padding:24px;width:400px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+    .modal h3{margin-bottom:12px}
+    .modal .form-group input{width:100%}
+    .modal .actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
+
+    .toast{position:fixed;bottom:24px;right:24px;padding:10px 20px;border-radius:8px;color:#fff;font-weight:500;z-index:200;animation:in .25s ease}
+    .toast.ok{background:var(--ok)}
+    .toast.err{background:var(--danger)}
+    @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:768px){
+      .sidebar{width:60px}
+      .sidebar-head h2,.sidebar-head .sub{display:none}
+      .sidebar-nav button span{display:none}
+      .sidebar-nav button{justify-content:center;padding:12px}
+      .list-panel{width:260px}
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-head"><h2>管理后台</h2><div class="sub">sqking-coke.github.io</div></div>
+    <nav class="sidebar-nav" id="nav"></nav>
+    <div class="sidebar-foot">
+      <button class="btn btn-pri" id="btnPublish" disabled style="width:100%">发布到 GitHub</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="brand">内容编辑</span>
+      <span class="hint" id="statusHint"></span>
+      <button class="btn btn-sm" id="btnSettings">⚙ 仓库配置</button>
+      <button class="btn btn-sm" id="btnReview">变更预览</button>
+    </div>
+    <div class="workspace">
+      <div class="list-panel" id="listPanel"></div>
+      <div class="editor" id="editor"><div class="editor-empty">← 从左侧列表选择一项进行编辑</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal" style="display:none">
+  <div class="modal">
+    <h3>仓库配置</h3>
+    <div class="form-group"><label>GitHub Token (需 repo 权限)</label><input type="password" id="cfgToken" placeholder="ghp_..."></div>
+    <div class="form-row">
+      <div class="form-group"><label>Owner</label><input type="text" id="cfgOwner" placeholder="sqking-coke"></div>
+      <div class="form-group"><label>Repo</label><input type="text" id="cfgRepo" placeholder="sqking-coke.github.io"></div>
+    </div>
+    <div class="form-group"><label>Branch</label><input type="text" id="cfgBranch" value="main"></div>
+    <div class="actions">
+      <button class="btn" id="btnSettingsCancel">取消</button>
+      <button class="btn btn-pri" id="btnSettingsSave">保存并加载数据</button>
+    </div>
+  </div>
+</div>
+
+<!-- Review Modal -->
+<div class="modal-overlay" id="reviewModal" style="display:none">
+  <div class="modal" style="max-width:600px;max-height:70vh;overflow-y:auto">
+    <h3>变更预览</h3>
+    <div id="reviewContent"><p style="color:var(--muted)">暂无变更。</p></div>
+    <div class="actions">
+      <button class="btn" id="btnReviewClose">关闭</button>
+      <button class="btn btn-ok" id="btnReviewPublish">确认发布</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const FILE_PATHS = {
+    projects:   'data/projects.json',
+    opensource: 'data/opensource.json',
+    timeline:   'data/timeline.json',
+    skills:     'data/skills.json',
+    contact:    'data/contact.json',
+    langZh:     'lang/zh.json',
+    langEn:     'lang/en.json',
+  };
+  const TAB_META = {
+    projects:   { label:'项目', icon:'📁' },
+    opensource: { label:'开源', icon:'🔗' },
+    timeline:   { label:'时间线', icon:'📅' },
+    skills:     { label:'技能', icon:'🛠' },
+    contact:    { label:'联系方式', icon:'📬' },
+    langZh:     { label:'中文文案', icon:'🇨🇳' },
+    langEn:     { label:'英文文案', icon:'🇬🇧' },
+  };
+
+  let DATA = {};
+  let ORIG = {};
+  let currentTab = 'projects';
+  let selectedIdx = -1;
+
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
+
+  function resolve(key) {
+    const zh = DATA['lang/zh.json'];
+    if (!zh) return key;
+    const v = key.split('.').reduce((o,k) => o?.[k], zh);
+    return (v && typeof v === 'string') ? v : key;
+  }
+
+  function getData(tab) { return DATA[FILE_PATHS[tab]]; }
+  function setData(tab, val) { DATA[FILE_PATHS[tab]] = val; markDirty(); }
+
+  function isDirtyPath(path) {
+    return JSON.stringify(DATA[path]) !== JSON.stringify(ORIG[path]?.content);
+  }
+  function dirtyTabs() {
+    return Object.entries(FILE_PATHS).filter(([,p]) => isDirtyPath(p)).map(([t]) => t);
+  }
+  function markDirty() {
+    const dirty = dirtyTabs();
+    $$('#nav button').forEach(b => {
+      b.classList.toggle('dirty', dirty.includes(b.dataset.tab));
+    });
+    $('#btnPublish').disabled = dirty.length === 0;
+    $('#statusHint').textContent = dirty.length ? `${dirty.length} 个模块已修改` : '';
+  }
+
+  function toast(msg, type) {
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2800);
+  }
+
+  // --- Config ---
+  function getConfig() {
+    return {
+      token: $('#cfgToken').value.trim(),
+      owner: $('#cfgOwner').value.trim() || 'sqking-coke',
+      repo: $('#cfgRepo').value.trim() || 'sqking-coke.github.io',
+      branch: $('#cfgBranch').value.trim() || 'main',
+    };
+  }
+  function saveConfigAndLoad() {
+    const c = getConfig();
+    localStorage.setItem('admin_cfg', JSON.stringify({ owner:c.owner, repo:c.repo, branch:c.branch }));
+    localStorage.setItem('admin_token', c.token);
+    $('#settingsModal').style.display = 'none';
+    if (c.token) loadFromGitHub(); else loadFromLocal();
+  }
+  function loadConfig() {
+    try {
+      const cfg = JSON.parse(localStorage.getItem('admin_cfg'));
+      if (cfg) {
+        $('#cfgOwner').value = cfg.owner || 'sqking-coke';
+        $('#cfgRepo').value = cfg.repo || 'sqking-coke.github.io';
+        $('#cfgBranch').value = cfg.branch || 'main';
+      } else {
+        $('#cfgOwner').value = 'sqking-coke';
+        $('#cfgRepo').value = 'sqking-coke.github.io';
+        $('#cfgBranch').value = 'main';
+      }
+      const tok = localStorage.getItem('admin_token');
+      if (tok) $('#cfgToken').value = tok;
+    } catch(e) {}
+  }
+
+  // --- GitHub API ---
+  async function gh(method, path, body) {
+    const c = getConfig();
+    if (!c.token) throw new Error('请先配置 GitHub Token');
+    const url = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path}`;
+    const headers = { Authorization: `Bearer ${c.token}`, Accept: 'application/vnd.github.v3+json' };
+    if (body) headers['Content-Type'] = 'application/json';
+    const res = await fetch(url, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e.message || `HTTP ${res.status}`); }
+    return res.json();
+  }
+
+  async function loadFromGitHub() {
+    const c = getConfig();
+    if (!c.token) { toast('请先配置 Token', 'err'); return; }
+    for (const [tab, path] of Object.entries(FILE_PATHS)) {
+      try {
+        const r = await gh('GET', path);
+        const ct = JSON.parse(atob(r.content));
+        DATA[path] = JSON.parse(JSON.stringify(ct));
+        ORIG[path] = { content: JSON.parse(JSON.stringify(ct)), sha: r.sha };
+      } catch(e) { toast(`加载 ${path} 失败: ${e.message}`, 'err'); }
+    }
+    refreshAll();
+    toast('数据已从 GitHub 加载', 'ok');
+  }
+
+  async function loadFromLocal() {
+    let n = 0;
+    for (const [tab, path] of Object.entries(FILE_PATHS)) {
+      try {
+        const res = await fetch(`../${path}`);
+        if (res.ok) {
+          const ct = await res.json();
+          DATA[path] = JSON.parse(JSON.stringify(ct));
+          ORIG[path] = { content: JSON.parse(JSON.stringify(ct)), sha: null };
+          n++;
+        }
+      } catch(e) {}
+    }
+    refreshAll();
+    if (n) toast(`本地加载 ${n} 个文件`, 'ok');
+    else toast('本地加载失败，请检查是否通过 http server 运行', 'err');
+  }
+
+  async function publish() {
+    const c = getConfig();
+    if (!c.token) { toast('请先配置 GitHub Token', 'err'); return; }
+    const dirty = dirtyTabs();
+    if (!dirty.length) { toast('没有需要发布的变更', 'err'); return; }
+    try {
+      for (const tab of dirty) {
+        const path = FILE_PATHS[tab];
+        const content = JSON.stringify(DATA[path], null, 2) + '\n';
+        const body = {
+          message: `[admin] 更新 ${path}`,
+          content: btoa(unescape(encodeURIComponent(content))),
+          branch: c.branch,
+        };
+        if (ORIG[path]?.sha) body.sha = ORIG[path].sha;
+        const r = await gh('PUT', path, body);
+        ORIG[path] = { content: JSON.parse(JSON.stringify(DATA[path])), sha: r.content.sha };
+        toast(`✓ ${path} 已发布`, 'ok');
+      }
+      refreshAll();
+      $('#reviewModal').style.display = 'none';
+    } catch(e) { toast(`发布失败: ${e.message}`, 'err'); }
+  }
+
+  // --- Navigation ---
+  function initNav() {
+    const nav = $('#nav');
+    nav.innerHTML = Object.entries(TAB_META).map(([k,m]) =>
+      `<button data-tab="${k}" class="${k===currentTab?'active':''}">${m.icon} <span>${m.label}</span><span class="dot"></span></button>`
+    ).join('');
+    nav.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        nav.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        currentTab = b.dataset.tab;
+        selectedIdx = -1;
+        refreshAll();
+      });
+    });
+  }
+
+  function refreshAll() { renderList(); renderEditor(); markDirty(); }
+
+  function itemLabel(tab, item, i) {
+    switch(tab) {
+      case 'projects': return resolve(item.titleKey) || item.titleKey || `项目 ${i+1}`;
+      case 'opensource': return resolve(item.key+'.title') || item.key;
+      case 'timeline': return resolve(item+'.title') || item;
+      case 'skills': return resolve(item.category) || item.category;
+      case 'contact': return resolve(item.key) || item.key;
+      default: return `#${i+1}`;
+    }
+  }
+  function itemSub(tab, item) {
+    switch(tab) {
+      case 'projects': return item.link;
+      case 'opensource': return item.linkCode || '';
+      case 'skills': return `${(item.items||[]).length} 个技能`;
+      case 'contact': return item.link;
+      case 'timeline': return resolve(item+'.date') || '';
+      default: return '';
+    }
+  }
+  function defaultItem(tab) {
+    switch(tab) {
+      case 'projects': return { id:'', img:'', titleKey:'', descKey:'', tags:[], link:'' };
+      case 'opensource': return { key:'', linkCode:'', linkDoc:null };
+      case 'timeline': return 'timeline.event_new';
+      case 'skills': return { category:'skills.new', items:[] };
+      case 'contact': return { icon:'', key:'', link:'' };
+      default: return {};
+    }
+  }
+
+  // --- List Panel ---
+  function renderList() {
+    const panel = $('#listPanel');
+    const tab = currentTab;
+    const data = getData(tab) || [];
+
+    if (['langZh','langEn'].includes(tab)) {
+      panel.innerHTML = `<div style="padding:20px;color:var(--muted);font-size:.85rem;line-height:1.8;">
+        <p><b>${TAB_META[tab].label}</b></p>
+        <p>直接编辑完整 JSON，适合批量修改。</p>
+        <p>顶层 Key: ${Object.keys(data||{}).slice(0,12).join(', ')}${Object.keys(data||{}).length>12?'...':''}</p>
+      </div>`;
+      selectedIdx = 0;
+      renderEditor();
+      return;
+    }
+
+    let html = `<div style="padding:8px 14px;font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;">
+      <span>${data.length} 项</span>
+      <button class="btn btn-sm btn-pri" id="btnAdd">+ 添加</button>
+    </div>`;
+    if (!data.length) {
+      html += '<div class="list-panel-empty">暂无数据<br>点击「+ 添加」创建第一项</div>';
+    } else {
+      data.forEach((item, i) => {
+        html += `
+          <div class="list-item ${i===selectedIdx?'active':''}" data-idx="${i}">
+            <div class="info"><div class="t">${itemLabel(tab,item,i)}</div><div class="s">${itemSub(tab,item)}</div></div>
+            <div class="reorder">
+              <button data-act="up" data-idx="${i}" ${i===0?'disabled':''}>▲</button>
+              <button data-act="down" data-idx="${i}" ${i===data.length-1?'disabled':''}>▼</button>
+            </div>
+            <div class="actions">
+              <button class="btn btn-sm btn-danger" data-act="del" data-idx="${i}">✕</button>
+            </div>
+          </div>`;
+      });
+    }
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('.list-item').forEach(el => {
+      el.addEventListener('click', e => {
+        if (e.target.closest('button')) return;
+        selectedIdx = parseInt(el.dataset.idx);
+        renderList(); renderEditor();
+      });
+    });
+    panel.querySelectorAll('[data-act="up"]').forEach(b => {
+      b.addEventListener('click', e => { e.stopPropagation();
+        const arr = getData(tab), i = parseInt(b.dataset.idx);
+        if (i>0) { [arr[i],arr[i-1]]=[arr[i-1],arr[i]]; setData(tab,arr); selectedIdx=i-1; refreshAll(); }
+      });
+    });
+    panel.querySelectorAll('[data-act="down"]').forEach(b => {
+      b.addEventListener('click', e => { e.stopPropagation();
+        const arr = getData(tab), i = parseInt(b.dataset.idx);
+        if (i<arr.length-1) { [arr[i],arr[i+1]]=[arr[i+1],arr[i]]; setData(tab,arr); selectedIdx=i+1; refreshAll(); }
+      });
+    });
+    panel.querySelectorAll('[data-act="del"]').forEach(b => {
+      b.addEventListener('click', e => { e.stopPropagation();
+        const arr = getData(tab), i = parseInt(b.dataset.idx);
+        if (!confirm(`确认删除「${itemLabel(tab,arr[i],i)}」？`)) return;
+        arr.splice(i,1); setData(tab,arr);
+        if (selectedIdx>=arr.length) selectedIdx=arr.length-1;
+        refreshAll();
+      });
+    });
+    $('#btnAdd')?.addEventListener('click', () => {
+      const arr = getData(tab);
+      arr.push(defaultItem(tab));
+      setData(tab, arr); selectedIdx=arr.length-1; refreshAll();
+    });
+  }
+
+  // --- Editor ---
+  function renderEditor() {
+    const editor = $('#editor');
+    const tab = currentTab;
+    const path = FILE_PATHS[tab];
+    const data = DATA[path];
+
+    if (['langZh','langEn'].includes(tab)) {
+      if (!data) { editor.innerHTML = '<div class="editor-empty">暂无数据</div>'; return; }
+      const json = JSON.stringify(data, null, 2);
+      editor.innerHTML = `
+        <h3>${TAB_META[tab].label} — JSON 编辑</h3>
+        <div class="form-group">
+          <textarea id="langEditor" style="min-height:520px;font-family:ui-monospace,monospace;font-size:.8rem;">${esc(json)}</textarea>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button class="btn btn-pri" id="langSave">保存到缓冲区</button>
+          <span style="font-size:.78rem;color:var(--muted);">修改后点保存，JSON 格式错误会提示</span>
+        </div>`;
+      $('#langSave').onclick = () => {
+        try { DATA[path]=JSON.parse($('#langEditor').value); markDirty(); toast('已保存','ok'); }
+        catch(e) { toast('JSON 格式错误: '+e.message,'err'); }
+      };
+      return;
+    }
+
+    const arr = data || [];
+    if (selectedIdx < 0 || selectedIdx >= arr.length) {
+      editor.innerHTML = '<div class="editor-empty">← 选择一项进行编辑，或点击「+ 添加」创建新项</div>';
+      return;
+    }
+
+    const item = arr[selectedIdx];
+    switch(tab) {
+      case 'projects': edProj(editor, item, arr); break;
+      case 'opensource': edOS(editor, item, arr); break;
+      case 'timeline': edTL(editor, item, arr); break;
+      case 'skills': edSkill(editor, item, arr); break;
+      case 'contact': edContact(editor, item, arr); break;
+    }
+  }
+
+  function fld(label, id, value, opts) {
+    const extra = opts?.key ? `<span class="resolved">→ ${resolve(value)||'(未找到文案)'}</span>` : '';
+    const ph = opts?.placeholder ? `placeholder="${esc(opts.placeholder)}"` : '';
+    return `<div class="form-group"><label>${label}${extra}</label><input id="${id}" value="${esc(value||'')}" ${ph}></div>`;
+  }
+
+  function edProj(el, p, arr) {
+    const tags = (p.tags||[]).map((t,i) =>
+      `<div class="tag-row"><input value="${esc(t)}" data-tag="${i}"><button class="btn btn-sm btn-danger" data-rmtag="${i}">✕</button></div>`
+    ).join('');
+    el.innerHTML = `
+      <h3>编辑项目</h3>
+      ${fld('ID','pid',p.id,{placeholder:'proj1'})}
+      ${fld('图片路径','pimg',p.img,{placeholder:'assets/images/xxx.png'})}
+      ${fld('标题 i18n Key','ptitle',p.titleKey,{key:true})}
+      ${fld('描述 i18n Key','pdesc',p.descKey,{key:true})}
+      ${fld('详情页链接','plink',p.link,{placeholder:'pages/projects/project1.html'})}
+      <div class="form-group"><label>标签</label><div id="tagsArea" style="max-height:140px;overflow-y:auto;">${tags}</div>
+        <button class="btn btn-sm" id="addTag" style="margin-top:6px;">+ 添加标签</button></div>
+      <div style="margin-top:16px;"><button class="btn btn-pri" id="edSave">保存</button></div>`;
+    $('#edSave').onclick = () => {
+      p.id=$('#pid').value; p.img=$('#pimg').value; p.titleKey=$('#ptitle').value; p.descKey=$('#pdesc').value; p.link=$('#plink').value;
+      setData('projects',arr); refreshAll();
+    };
+    $('#addTag').onclick = () => { p.tags.push(''); setData('projects',arr); renderEditor(); };
+    el.querySelectorAll('[data-rmtag]').forEach(b => b.onclick = () => { p.tags.splice(+b.dataset.rmtag,1); setData('projects',arr); renderEditor(); });
+    el.querySelectorAll('[data-tag]').forEach(inp => inp.addEventListener('change',()=>{p.tags[+inp.dataset.tag]=inp.value;setData('projects',arr);}));
+  }
+
+  function edOS(el, o, arr) {
+    el.innerHTML = `
+      <h3>编辑开源项目</h3>
+      ${fld('i18n Key','oskey',o.key,{placeholder:'opensource.item1',key:true})}
+      ${fld('代码链接','oscode',o.linkCode,{placeholder:'https://github.com/...'})}
+      ${fld('文档链接','osdoc',o.linkDoc,{placeholder:'留空表示无文档链接'})}
+      <div style="margin-top:16px;"><button class="btn btn-pri" id="edSave">保存</button></div>`;
+    $('#edSave').onclick = () => {
+      o.key=$('#oskey').value; o.linkCode=$('#oscode').value||null; o.linkDoc=$('#osdoc').value||null;
+      setData('opensource',arr); refreshAll();
+    };
+  }
+
+  function edTL(el, key, arr) {
+    const preview = resolve(key+'.date') ? `${resolve(key+'.date')} — ${resolve(key+'.title')}` : '';
+    el.innerHTML = `
+      <h3>编辑时间线事件</h3>
+      ${fld('i18n Key','tlkey',key,{placeholder:'timeline.event1',key:true})}
+      <div class="form-group"><label>当前文案预览</label><p style="font-size:.85rem;color:var(--muted);">${preview||'(未找到对应文案，请在中文/英文文案中编辑)'}</p></div>
+      <p style="font-size:.76rem;color:var(--muted);margin-bottom:12px;">时间线只存 key 的顺序。具体文案（title/date/desc）在「中文文案/英文文案」的 timeline 段中编辑。</p>
+      <div style="margin-top:16px;"><button class="btn btn-pri" id="edSave">保存</button></div>`;
+    $('#edSave').onclick = () => { arr[selectedIdx]=$('#tlkey').value; setData('timeline',arr); refreshAll(); };
+  }
+
+  function edSkill(el, cat, arr) {
+    const items = (cat.items||[]).map((s,i) =>
+      `<div class="skill-item-row">
+        <input value="${esc(s.name)}" data-skname="${i}" placeholder="名称">
+        <input value="${esc(s.icon)}" data-skicon="${i}" placeholder="图标" class="icon">
+        <button class="btn btn-sm btn-danger" data-rmskill="${i}">✕</button>
+      </div>`).join('');
+    el.innerHTML = `
+      <h3>编辑技能分类</h3>
+      ${fld('分类 i18n Key','catKey',cat.category,{key:true})}
+      <div class="form-group"><label>技能条目</label><div class="skill-items">${items}</div>
+        <button class="btn btn-sm" id="addSkill" style="margin-top:6px;">+ 添加技能</button></div>
+      <div style="margin-top:16px;display:flex;gap:8px;">
+        <button class="btn btn-pri" id="edSave">保存</button>
+        <button class="btn btn-danger btn-sm" id="delCat">删除此分类</button></div>`;
+    $('#edSave').onclick = () => {
+      cat.category=$('#catKey').value;
+      const ns=el.querySelectorAll('[data-skname]'), is=el.querySelectorAll('[data-skicon]');
+      cat.items=Array.from(ns).map((n,i)=>({name:n.value,icon:is[i]?.value||''}));
+      setData('skills',arr); refreshAll();
+    };
+    $('#addSkill').onclick = () => { cat.items.push({name:'',icon:'fas fa-code'}); setData('skills',arr); renderEditor(); };
+    el.querySelectorAll('[data-rmskill]').forEach(b => b.onclick = () => { cat.items.splice(+b.dataset.rmskill,1); setData('skills',arr); renderEditor(); });
+    $('#delCat')?.addEventListener('click', () => {
+      if (!confirm('确认删除此分类？')) return;
+      arr.splice(selectedIdx,1); setData('skills',arr); selectedIdx=-1; refreshAll();
+    });
+  }
+
+  function edContact(el, c, arr) {
+    el.innerHTML = `
+      <h3>编辑联系方式</h3>
+      ${fld('图标 class','conIcon',c.icon,{placeholder:'fab fa-github'})}
+      ${fld('i18n Key','conKey',c.key,{key:true})}
+      ${fld('链接','conLink',c.link,{placeholder:'https://...'})}
+      <div style="margin-top:16px;"><button class="btn btn-pri" id="edSave">保存</button></div>`;
+    $('#edSave').onclick = () => {
+      c.icon=$('#conIcon').value; c.key=$('#conKey').value; c.link=$('#conLink').value;
+      setData('contact',arr); refreshAll();
+    };
+  }
+
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  // --- Modals ---
+  function showSettings() { $('#settingsModal').style.display='flex'; }
+  function hideSettings() { $('#settingsModal').style.display='none'; }
+  function showReview() {
+    const dirty = dirtyTabs();
+    if (!dirty.length) { toast('没有变更','err'); return; }
+    $('#reviewContent').innerHTML = '<p style="margin-bottom:12px;">以下文件将被提交到 GitHub：</p>' +
+      dirty.map(t => `<p style="font-size:.85rem;padding:4px 0;">📝 <b>${FILE_PATHS[t]}</b></p>`).join('');
+    $('#reviewModal').style.display='flex';
+  }
+
+  // --- Init ---
+  function init() {
+    loadConfig();
+    initNav();
+    loadFromLocal();
+  }
+
+  $('#btnSettings').addEventListener('click', showSettings);
+  $('#btnSettingsCancel').addEventListener('click', hideSettings);
+  $('#btnSettingsSave').addEventListener('click', saveConfigAndLoad);
+  $('#btnReview').addEventListener('click', showReview);
+  $('#btnReviewClose').addEventListener('click', ()=>$('#reviewModal').style.display='none');
+  $('#btnReviewPublish').addEventListener('click', publish);
+  $('#btnPublish').addEventListener('click', showReview);
+  $$('.modal-overlay').forEach(m => m.addEventListener('click', e => { if (e.target===m) m.style.display='none'; }));
+
+  init();
+})();
+</script>
+</body>
+</html>
