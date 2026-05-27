@@ -38,9 +38,9 @@
       "tags": ["Java", "AI Agent", "Code Review", "RAG", "Security"]
     },
     "item5": {
-      "title": "多 Agent 协同办公系统（规划中）",
-      "desc": "从单 Agent 开发跨越到多智能体集群架构的分水岭项目。调度 Agent 统一入口 → 意图解析 → 任务拆解 → 分发到子 Agent（数据/文案/审批/检索等）→ 结果聚合与冲突消解。核心掌握 DAG 任务编排、Agent 注册与发现、串行依赖与并行调度。",
-      "tags": ["Java", "Multi-Agent", "Orchestrator", "DAG", "Pluggable"]
+      "title": "多 Agent 协同办公系统",
+      "desc": "Java 原生多智能体协同中台，不依赖 LangChain/AutoGen 等框架，基于策略模式的 DispatchHub 统一调度多 Agent 协作。核心设计：规则模板 + LLM 混合任务拆解、七种协同执行策略（并行/串行/接力/主从/条件分支/循环迭代/人工审批）、BizAgent 接口实现五大内置 Agent 插拔式注册、Guava EventBus 事件驱动 Agent 通信、全局上下文共享。完整覆盖安全认证（JWT+RBAC+多租户）、LLM 调用抽象（多提供商+缓存+预算控制）、全链路可观测（traceId+Prometheus）。",
+      "tags": ["Java", "Multi-Agent", "Orchestrator", "EventBus", "RAG", "Security"]
     },
     "item6": {
       "title": "本地私有知识库问答 Agent（规划中）",
@@ -52,7 +52,8 @@
     "title": "业务数据智能查询 Agent（NL2SQL）— Level 1 入门",
     "desc": "AI 数据查询 Agent 是一个 Java 后端入门级 AI Agent 项目，旨在帮助开发者彻底理解 AI Agent 的三大核心原理：大模型推理、工具调用（Tool Calling）与任务闭环调度。<br><br>项目特点：<br>1）原生手写核心逻辑，不依赖 LangChain 等重型 AI 框架；<br>2）纯 Java 后端工程化实现，适合 Spring Boot 技术栈开发者；<br>3）代码结构清晰，注释完善，适合作为 AI Agent 学习起点。<br><br>核心流程：用户自然语言提问 → LLM 理解意图 → 自动选择数据查询工具 → 执行 SQL/API 查询 → 结果整理与返回 → 任务闭环。适合改造为企业内部智能数据助手或自动报表系统。",
     "links": {
-      "github": "开源代码"
+      "github": "开源代码",
+      "techDoc": "技术文档"
     }
   },
   "project2": {
@@ -81,9 +82,10 @@
   },
   "project5": {
     "title": "多 Agent 协同办公系统 — Level 5 架构协同",
-    "desc": "多 Agent 协同办公系统是从单 Agent 开发跨越到多智能体集群架构的分水岭项目。<br><br>核心架构：<br>1）调度 Agent（Orchestrator）：统一任务入口，意图识别 → 任务拆解 → 分发子 Agent → 结果聚合与冲突消解；<br>2）数据 Agent：NL2SQL 查询 + 报表统计 + 趋势分析；<br>3）文案 Agent：周报生成 + 通知公告 + 公文撰写；<br>4）审批 Agent：规则判断 + 流程审批 + 权限校验 + 合规检查。<br><br>技术亮点：基于 DAG 拓扑执行的任务编排引擎，支持串行依赖与并行执行；可插拔 Agent 注册机制（基于接口 + 注解，新增 Agent 只需实现接口）；多用户会话隔离 + 任务状态追踪。<br><br>🔨 该项目正在规划中，敬请期待。",
+    "desc": "Java 原生多智能体协同中台，不依赖 LangChain/AutoGen 等重型 AI 框架，基于策略模式的 DispatchHub 统一调度多 Agent 协作。<br><br>核心设计：<br>1）DispatchHub 调度中枢：统一任务入口，负责拆解→分发→协同执行→结果聚合。TaskDecomposer 采用规则模板优先匹配（&lt;100ms）+ LLM 实时拆解降级的混合策略，拆解结果经 DAG 无环校验后按策略执行；<br>2）七种协同执行策略：基于 CollaborationStrategy 接口实现 PARALLEL / SERIAL / RELAY / MASTER_SLAVE / CONDITION / LOOP / APPROVAL 七种模式，各模式独立封装，策略与调度逻辑解耦；<br>3）插拔式 Agent 注册：BizAgent 接口定义统一规范（agentCode + capability + execute），AgentRegistry 集中管理，五大内置 Agent（工单处理/代码审查/文档AI/数据复盘/RAG答疑）均为接口实现类，新增 Agent 无需改动调度核心；<br>4）安全与多租户：Spring Security + JWT 无状态认证，RBAC 三级权限（ADMIN/MANAGER/USER），MyBatis-Plus 拦截器自动注入 tenant_id 实现数据隔离；<br>5）Agent 间通信：Guava EventBus 发布订阅解耦，7 种事件类型覆盖任务全生命周期，Agent 之间不直接通信，统一经 EventBus 由中枢中转，全局上下文通过 ConcurrentHashMap + ReentrantReadWriteLock 共享；<br>6）LLM 调用层：LLMProvider 接口统一抽象 OpenAI/Anthropic/国产模型，LLMCache 基于 LRU 缓存复用结果，TokenBudgetService 按 Agent 维度统计消耗并预算控制；<br>7）可观测性：traceId 贯穿全链路（MDC 传递），Micrometer + Prometheus 采集任务/LLM/线程池/缓存多维指标，分级告警规则（P1/P2）。<br><br>规则模板 + LLM 混合拆解保证可靠性，七种策略模式协同覆盖简单到复杂全场景，EventBus 事件驱动 + 全局上下文解决 Agent 数据孤岛，LLM 预算按 Agent 维度控制成本，MyBatis-Plus 拦截器透明多租户隔离。",
     "links": {
-      "github": "开源代码（即将发布）"
+      "github": "开源代码",
+      "techDoc": "技术文档"
     }
   },
   "project6": {

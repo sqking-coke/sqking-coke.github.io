@@ -38,9 +38,9 @@
       "tags": ["Java", "AI Agent", "Code Review", "RAG", "Security"]
     },
     "item5": {
-      "title": "Multi-Agent Collaboration System (Planning)",
-      "desc": "The watershed project bridging single-Agent to multi-agent cluster architecture. Orchestrator Agent as unified entry → intent parsing → task decomposition → dispatch to sub-agents (Data/Document/Approval/Retrieval) → result aggregation & conflict resolution. Master DAG task orchestration, Agent registry & discovery, serial dependency & parallel scheduling.",
-      "tags": ["Java", "Multi-Agent", "Orchestrator", "DAG", "Pluggable"]
+      "title": "Multi-Agent Collaboration System",
+      "desc": "Java-native multi-agent collaboration platform. No LangChain/AutoGen dependencies — built on a strategy-pattern DispatchHub orchestrating multi-agent collaboration. Core design: rule templates + LLM hybrid task decomposition, seven collaboration strategies (Parallel/Serial/Relay/Master-Slave/Conditional Branch/Loop Iteration/Human Approval), BizAgent interface with five built-in pluggable Agents, Guava EventBus-driven Agent communication, and global context sharing. Full coverage: security (JWT+RBAC+Multi-tenancy), LLM abstraction layer (multi-provider + caching + budget control), and end-to-end observability (traceId + Prometheus).",
+      "tags": ["Java", "Multi-Agent", "Orchestrator", "EventBus", "RAG", "Security"]
     },
     "item6": {
       "title": "Local Private RAG Knowledge Base (Planning)",
@@ -52,7 +52,8 @@
     "title": "NL2SQL Data Query Agent — Level 1 Entry Point",
     "desc": "The AI Data Query Agent is an entry-level Java AI Agent designed to help developers deeply understand the three core principles: LLM reasoning, Tool Calling, and task orchestration.<br><br>Key features:<br>1) Hand-written core logic with no dependencies on heavy frameworks like LangChain;<br>2) Pure Java backend implementation, ideal for Spring Boot developers;<br>3) Clean, well-commented code structured as an ideal learning path.<br><br>Core flow: natural language query → LLM intent understanding → automatic tool selection → SQL/API query execution → result formatting → task completion. Adaptable as an enterprise data assistant or automated reporting system.",
     "links": {
-      "github": "Source Code"
+      "github": "Source Code",
+      "techDoc": "Documentation"
     }
   },
   "project2": {
@@ -81,9 +82,10 @@
   },
   "project5": {
     "title": "Multi-Agent Collaboration System — Level 5 Architecture",
-    "desc": "The Multi-Agent Collaboration System is the watershed project bridging single-Agent development to multi-agent cluster architecture.<br><br>Core architecture:<br>1) Orchestrator Agent: unified task entry, intent recognition → task decomposition → sub-agent dispatch → result aggregation & conflict resolution;<br>2) Data Agent: NL2SQL queries + report statistics + trend analysis;<br>3) Document Agent: weekly report generation + notifications + document drafting;<br>4) Approval Agent: rule-based judgment + process approval + permission checks + compliance.<br><br>Technical highlights: DAG topology-based task orchestration engine supporting serial dependencies and parallel execution; pluggable Agent registration mechanism (interface + annotation based, new Agents just implement the interface); multi-user session isolation + task status tracking.<br><br>🔨 This project is under planning. Stay tuned.",
+    "desc": "Java-native multi-agent collaboration platform. No LangChain/AutoGen dependencies — built on a strategy-pattern DispatchHub orchestrating multi-agent collaboration.<br><br>Core design:<br>1) DispatchHub orchestration center: unified task entry, handles decomposition→dispatch→collaborative execution→result aggregation. TaskDecomposer uses a hybrid strategy of rule-template priority matching (&lt;100ms) + LLM real-time decomposition fallback, results validated by DAG cycle detection before strategy execution;<br>2) Seven collaboration strategies: PARALLEL / SERIAL / RELAY / MASTER_SLAVE / CONDITION / LOOP / APPROVAL implemented via CollaborationStrategy interface, each mode independently encapsulated with strategy decoupled from scheduling logic;<br>3) Pluggable Agent registration: BizAgent interface defines unified spec (agentCode + capability + execute), AgentRegistry provides centralized management, five built-in Agents (Ticket/Code Review/Document AI/Data Review/RAG Q&amp;A) are interface implementations — adding new Agents requires zero changes to the scheduling core;<br>4) Security &amp; multi-tenancy: Spring Security + JWT stateless auth, RBAC three-tier permissions (ADMIN/MANAGER/USER), MyBatis-Plus interceptor auto-injects tenant_id for data isolation;<br>5) Agent communication: Guava EventBus pub/sub decoupling, 7 event types covering the full task lifecycle, Agents never communicate directly — all messages routed through EventBus via the hub, global context shared via ConcurrentHashMap + ReentrantReadWriteLock;<br>6) LLM abstraction layer: LLMProvider interface unifies OpenAI/Anthropic/domestic models, LLMCache uses LRU caching for result reuse, TokenBudgetService tracks consumption per Agent with budget control;<br>7) Observability: traceId end-to-end tracing (MDC propagation), Micrometer + Prometheus collecting task/LLM/thread-pool/cache multi-dimensional metrics, tiered alerting rules (P1/P2).<br><br>Rule templates + LLM hybrid decomposition ensures reliability, seven strategy patterns cover simple to complex scenarios, EventBus event-driven + global context solves Agent data silos, LLM budget controlled per Agent for cost management, MyBatis-Plus interceptor provides transparent multi-tenant isolation.",
     "links": {
-      "github": "Source Code (Coming Soon)"
+      "github": "Source Code",
+      "techDoc": "Documentation"
     }
   },
   "project6": {
