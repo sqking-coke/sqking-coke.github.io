@@ -14,28 +14,63 @@
   </defs>
   <rect width="800" height="400" fill="url(#bg5)"/>
   <rect width="800" height="400" fill="url(#grid5)"/>
-  <!-- Central orchestrator node -->
-  <circle cx="400" cy="150" r="48" fill="none" stroke="url(#iconG5)" stroke-width="2.5"/>
-  <text x="400" y="157" text-anchor="middle" font-family="monospace" font-size="22" font-weight="700" fill="#a5b4fc">调度</text>
-  <!-- Surrounding agent nodes -->
-  <circle cx="250" cy="110" r="28" fill="none" stroke="url(#iconG5)" stroke-width="1.8" opacity="0.7"/>
-  <text x="250" y="116" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">数据</text>
-  <circle cx="550" cy="110" r="28" fill="none" stroke="url(#iconG5)" stroke-width="1.8" opacity="0.7"/>
-  <text x="550" y="116" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">文案</text>
-  <circle cx="300" cy="195" r="28" fill="none" stroke="url(#iconG5)" stroke-width="1.8" opacity="0.7"/>
-  <text x="300" y="201" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">审批</text>
-  <circle cx="500" cy="195" r="28" fill="none" stroke="url(#iconG5)" stroke-width="1.8" opacity="0.7"/>
-  <text x="500" y="201" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.5)">检索</text>
-  <!-- Connection lines -->
-  <line x1="278" y1="110" x2="352" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-  <line x1="522" y1="110" x2="448" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-  <line x1="328" y1="195" x2="352" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-  <line x1="472" y1="195" x2="448" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-  <!-- Planning badge -->
-  <rect x="340" y="235" width="120" height="28" rx="14" fill="rgba(99,102,241,0.3)" stroke="#818cf8" stroke-width="1"/>
-  <text x="400" y="254" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#c7d2fe">🔨 规划中</text>
-  <!-- Text -->
-  <text x="400" y="315" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="34" font-weight="700" fill="#ffffff">Multi-Agent Collaboration System</text>
-  <text x="400" y="350" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="rgba(255,255,255,0.5)">Orchestrator + DAG Scheduling + Pluggable Agent Registry</text>
-  <rect x="350" y="375" width="100" height="3" rx="1.5" fill="url(#iconG5)" opacity="0.6"/>
+
+  <!-- EventBus ring -->
+  <circle cx="400" cy="140" r="80" fill="none" stroke="rgba(129,140,248,0.12)" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- Central DispatchHub -->
+  <circle cx="400" cy="140" r="38" fill="rgba(99,102,241,0.25)" stroke="url(#iconG5)" stroke-width="2.5"/>
+  <text x="400" y="137" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#c7d2fe">Dispatch</text>
+  <text x="400" y="152" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#c7d2fe">Hub</text>
+
+  <!-- Agent 1 - top-left: Code Review -->
+  <circle cx="280" cy="95" r="24" fill="rgba(99,102,241,0.2)" stroke="#818cf8" stroke-width="1.8"/>
+  <text x="280" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#a5b4fc">审查</text>
+  <line x1="304" y1="95" x2="362" y2="140" stroke="rgba(129,140,248,0.2)" stroke-width="1.2"/>
+
+  <!-- Agent 2 - top-right: Document AI -->
+  <circle cx="520" cy="95" r="24" fill="rgba(99,102,241,0.2)" stroke="#818cf8" stroke-width="1.8"/>
+  <text x="520" y="100" text-anchor="middle" font-family="monospace" font-size="11" fill="#a5b4fc">文档</text>
+  <line x1="496" y1="95" x2="438" y2="140" stroke="rgba(129,140,248,0.2)" stroke-width="1.2"/>
+
+  <!-- Agent 3 - bottom-left: Ticket -->
+  <circle cx="305" cy="195" r="24" fill="rgba(99,102,241,0.2)" stroke="#818cf8" stroke-width="1.8"/>
+  <text x="305" y="200" text-anchor="middle" font-family="monospace" font-size="11" fill="#a5b4fc">工单</text>
+  <line x1="329" y1="195" x2="362" y2="140" stroke="rgba(129,140,248,0.2)" stroke-width="1.2"/>
+
+  <!-- Agent 4 - bottom-right: Data -->
+  <circle cx="495" cy="195" r="24" fill="rgba(99,102,241,0.2)" stroke="#818cf8" stroke-width="1.8"/>
+  <text x="495" y="200" text-anchor="middle" font-family="monospace" font-size="11" fill="#a5b4fc">报表</text>
+  <line x1="471" y1="195" x2="438" y2="140" stroke="rgba(129,140,248,0.2)" stroke-width="1.2"/>
+
+  <!-- Agent 5 - far right: RAG Q&A -->
+  <circle cx="570" cy="145" r="24" fill="rgba(99,102,241,0.2)" stroke="#818cf8" stroke-width="1.8"/>
+  <text x="570" y="150" text-anchor="middle" font-family="monospace" font-size="11" fill="#a5b4fc">RAG</text>
+  <line x1="546" y1="145" x2="438" y2="140" stroke="rgba(129,140,248,0.2)" stroke-width="1.2"/>
+
+  <!-- Strategy tags floating -->
+  <rect x="155" y="88" width="55" height="20" rx="10" fill="rgba(99,102,241,0.15)" stroke="rgba(129,140,248,0.25)" stroke-width="0.8"/>
+  <text x="182" y="102" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(165,180,252,0.6)">PARALLEL</text>
+
+  <rect x="145" y="188" width="48" height="20" rx="10" fill="rgba(99,102,241,0.15)" stroke="rgba(129,140,248,0.25)" stroke-width="0.8"/>
+  <text x="169" y="202" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(165,180,252,0.6)">RELAY</text>
+
+  <rect x="590" y="88" width="45" height="20" rx="10" fill="rgba(99,102,241,0.15)" stroke="rgba(129,140,248,0.25)" stroke-width="0.8"/>
+  <text x="612" y="102" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(165,180,252,0.6)">SERIAL</text>
+
+  <rect x="600" y="188" width="52" height="20" rx="10" fill="rgba(99,102,241,0.15)" stroke="rgba(129,140,248,0.25)" stroke-width="0.8"/>
+  <text x="626" y="202" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(165,180,252,0.6)">APPROVAL</text>
+
+  <!-- Decorative dots -->
+  <circle cx="120" cy="130" r="2" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="680" cy="120" r="2.5" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="140" cy="300" r="1.5" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="660" cy="310" r="2" fill="rgba(255,255,255,0.06)"/>
+
+  <!-- Title text -->
+  <text x="400" y="295" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="34" font-weight="700" fill="#ffffff">Multi-Agent Collaboration System</text>
+  <text x="400" y="330" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="rgba(255,255,255,0.5)">DispatchHub + 7 Strategies + EventBus + JWT/RBAC + Prometheus</text>
+
+  <!-- Bottom accent line -->
+  <rect x="350" y="360" width="100" height="3" rx="1.5" fill="url(#iconG5)" opacity="0.6"/>
 </svg>

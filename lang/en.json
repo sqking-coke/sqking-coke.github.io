@@ -43,9 +43,9 @@
       "tags": ["Java", "Multi-Agent", "Orchestrator", "EventBus", "RAG", "Security"]
     },
     "item6": {
-      "title": "Local Private RAG Knowledge Base (Planning)",
-      "desc": "The ultimate capstone of the learning roadmap — enterprise-grade full RAG pipeline. End-to-end: multi-format doc loading → intelligent chunking → vector embedding → hybrid search (BM25 + vector + RRF fusion) → rerank → answer generation with citations. Supports Ollama + Qwen3 local model for fully offline, private deployment with zero data leakage.",
-      "tags": ["Java", "RAG", "Vector DB", "Local LLM", "Private Deploy"]
+      "title": "mindvaults — Local Private RAG Knowledge Base",
+      "desc": "Open-source, privacy-first local RAG knowledge base Q&A system. Transparent RAG Pipeline with real-time SSE progress, answers with source citations + excerpts + similarity scores. Multi-KB isolation, one-click Obsidian vault import, knowledge distillation loop, concept network extraction, content health diagnostics. Docker Compose one-click deploy, dual-mode: cloud API or fully local Ollama.",
+      "tags": ["TypeScript", "Python", "RAG", "pgvector", "Local LLM", "Next.js"]
     }
   },
   "project1": {
@@ -89,10 +89,11 @@
     }
   },
   "project6": {
-    "title": "Local Private RAG Knowledge Base — Level 6 Capstone",
-    "desc": "The Local Private RAG Knowledge Base is the ultimate capstone of the learning roadmap and the most valuable, core industrial AI deployment pattern.<br><br>Complete RAG Pipeline:<br>1) Document loading: PDF, Word, Markdown, TXT, HTML multi-format support;<br>2) Intelligent chunking: heading-aware + semantic boundary + configurable overlap window;<br>3) Vector storage: local SQLite + vector table / memory-mapped file approach;<br>4) Hybrid retrieval: BM25 keyword + vector semantic search + RRF weighted fusion;<br>5) Reranking: Cross-encoder / LLM Rerank fine ranking;<br>6) Answer generation: Prompt assembly + source citation + hallucination checking + streaming output.<br><br>System capabilities: supports Ollama + Qwen3-8B local model for fully offline operation with optional cloud model fallback; knowledge base CRUD + incremental index updates; multi-turn conversation context management.<br><br>🔨 This project is under planning. Stay tuned.",
+    "title": "mindvaults — Local Private RAG Knowledge Base",
+    "desc": "mindvaults is an open-source, privacy-first local RAG (Retrieval-Augmented Generation) knowledge base Q&A system built with Next.js 14 + FastAPI + PostgreSQL/pgvector, with zero third-party SaaS dependencies and fully offline operation — your data never leaves your environment.<br><br>Core Architecture:<br>1) Transparent RAG Pipeline: Intent recognition → vector retrieval → reranker → LLM generation, each step streamed in real-time via SSE progress events — no more black-box retrieval;<br>2) Cited Answers with Traceability: Every answer includes source documents, original text excerpts, and similarity scores; click citation numbers to jump to the original source, eliminating untraceable hallucinations;<br>3) Multi-Knowledge Base Isolation: Create multiple KBs with independent management of documents, chunks, sessions, and model configs; retrieval scoped to a single KB or global across all;<br>4) Multi-Format Document Parsing: Auto parsing and vectorization for PDF, Word, Markdown, and TXT files; one-click Obsidian vault import with automatic YAML frontmatter property extraction;<br>5) Pluggable Model Architecture: LLM and Embedding models independently configurable — DeepSeek / OpenAI / SiliconFlow / Ollama — switch providers without any code changes;<br>6) Dual Deployment Modes: Lightweight mode with 5 containers (cloud API) or full-stack with 6 containers (Ollama local inference); runs on anything from a Mac mini to cloud servers via Docker Compose one-click deploy;<br>7) Smart Routing &amp; Knowledge Distillation: Three-tier fallback matching (centroid vector → LLM routing → user guidance) automatically selects the best KB per query; LLM extracts knowledge points from conversations and feeds them back after deduplication and review;<br>8) Concept Network &amp; Content Health: Auto-builds domain concept networks during document ingestion with concept summaries injected into RAG context; Content Health Center provides near-duplicate detection, low-quality identification, staleness marking, orphan detection, and fragment cluster discovery with health scoring and one-click cleanup.<br><br>The project covers the complete lifecycle from document ingestion to knowledge accumulation, ready for production deployment as private enterprise knowledge base infrastructure.",
     "links": {
-      "github": "Source Code (Coming Soon)"
+      "github": "Source Code",
+      "techDoc": "Documentation"
     }
   },
   "projects1": {
@@ -106,34 +107,19 @@
     "btnCode": "Code",
     "btnDoc": "Docs",
     "item1": {
-      "title": "Spring AI Agent Starter",
-      "desc": "A Spring Boot starter for rapid AI Agent development. Encapsulates LLM invocation, tool registration, and task orchestration, enabling developers to build their first AI Agent in 5 minutes.",
-      "tags": ["Spring Boot", "AI Agent", "Starter", "Auto Configuration"]
+      "title": "Modern MD Editor — AI-Powered Markdown Editor",
+      "desc": "A high-appearance Markdown editor + social platform publisher. Dual-pane edit/preview, WYSIWYG mode, one-click copy optimized for WeChat/social media rich text, Mermaid diagrams, LaTeX math, PDF/PNG export, multi-theme system. Built-in AI features: text polishing, title generation, summary extraction, and image generation. Vue 3 + CodeMirror 6 + Spring Boot 3 full-stack.",
+      "tags": ["Vue 3", "Markdown", "AI Writing", "CodeMirror", "Spring Boot"]
     },
     "item2": {
-      "title": "Java RAG Framework",
-      "desc": "A lightweight Java RAG (Retrieval-Augmented Generation) framework supporting multiple vector databases (Milvus, Pinecone, Elasticsearch). Provides a one-stop RAG solution covering document parsing, embedding, retrieval, and generation.",
-      "tags": ["Java", "RAG", "Vector DB", "Embedding", "LLM"]
+      "title": "mindvaults — Local Private RAG Knowledge Base",
+      "desc": "Open-source, privacy-first local RAG knowledge base Q&A system. Transparent RAG Pipeline with real-time SSE progress, answers with source citations + excerpts + similarity scores. Multi-KB isolation, one-click Obsidian vault import, knowledge distillation loop, concept network extraction, content health diagnostics. Next.js + FastAPI + PostgreSQL/pgvector, Docker Compose one-click deploy, cloud or fully local Ollama dual-mode.",
+      "tags": ["TypeScript", "Python", "RAG", "pgvector", "Next.js", "FastAPI"]
     },
     "item3": {
-      "title": "LLM Tool Calling SDK",
-      "desc": "A Java-native LLM tool calling SDK supporting OpenAI, Claude, DeepSeek, and more. Features tool registration, automatic schema generation, and result parsing, enabling seamless LLM integration with existing business systems.",
-      "tags": ["Java", "LLM", "Tool Calling", "SDK", "Multi-Model"]
-    },
-    "item4": {
       "title": "API Auto Test Framework",
       "desc": "An annotation-driven Java API testing framework supporting HTTP, gRPC, and WebSocket protocols. Integrates AI-powered assertion generation and intelligent retry on failure, ideal for microservice testing scenarios.",
       "tags": ["Java", "Testing", "API", "Automation", "gRPC"]
-    },
-    "item5": {
-      "title": "Smart Work Order Engine",
-      "desc": "An embeddable workflow engine core library featuring customizable process orchestration, conditional branching, parallel approvals, and SLA management, with built-in AI-driven ticket classification and recommendations.",
-      "tags": ["Java", "Workflow", "Engine", "AI", "SLA"]
-    },
-    "item6": {
-      "title": "Code Quality Analyzer",
-      "desc": "A Java code quality analysis toolkit supporting AST-level inspections, cyclomatic complexity analysis, code smell detection, and auto-fix suggestions. Integrates into CI/CD pipelines as a quality gate.",
-      "tags": ["Java", "Code Quality", "AST", "CI/CD", "Static Analysis"]
     }
   },
   "timeline": {

@@ -44,7 +44,7 @@
     "img": "assets/images/cover-rag-knowledge.svg",
     "titleKey": "projects.item6.title",
     "descKey": "projects.item6.desc",
-    "tags": ["Java", "RAG", "Vector DB", "Local LLM", "Private Deploy"],
+    "tags": ["TypeScript", "Python", "RAG", "pgvector", "Local LLM", "Next.js"],
     "link": "pages/projects/project6.html"
   }
 ]

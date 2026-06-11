@@ -43,9 +43,9 @@
       "tags": ["Java", "Multi-Agent", "Orchestrator", "EventBus", "RAG", "Security"]
     },
     "item6": {
-      "title": "本地私有知识库问答 Agent（规划中）",
-      "desc": "整套学习路线技术天花板、企业级 RAG 完整落地项目。全链路 RAG Pipeline：多格式文档加载 → 智能分块 → 向量化存储 → 混合检索（BM25+向量+RRF 融合）→ 重排序 → 答案生成+来源溯源。支持 Ollama + Qwen3 本地模型完全离线运行，纯正私有化无数据外泄。",
-      "tags": ["Java", "RAG", "Vector DB", "Local LLM", "Private Deploy"]
+      "title": "mindvaults — 本地私有知识库问答系统",
+      "desc": "开源隐私优先的本地 RAG 知识库问答系统。全透明 RAG Pipeline SSE 实时可见，答案带来源追溯+原文摘录+相似度评分。支持多知识库隔离、Obsidian 一键导入、知识蒸馏闭环沉淀、概念网络自动提取、内容健康诊断。Docker Compose 一键部署，云端或 Ollama 全本地双模式运行。",
+      "tags": ["TypeScript", "Python", "RAG", "pgvector", "Local LLM", "Next.js"]
     }
   },
   "project1": {
@@ -89,10 +89,11 @@
     }
   },
   "project6": {
-    "title": "本地私有知识库问答 Agent — Level 6 技术天花板",
-    "desc": "本地私有知识库问答 Agent 是整套学习路线的技术天花板，也是工业界 AI 落地最核心、最值钱的技术方案。<br><br>完整 RAG Pipeline：<br>1）文档加载：支持 PDF、Word、Markdown、TXT、HTML 多格式；<br>2）智能分块：标题感知 + 语义边界 + 可配置重叠窗口；<br>3）向量化存储：本地 SQLite + 向量表 / 内存映射文件方案；<br>4）混合检索：BM25 关键词 + 向量语义检索 + RRF 加权融合；<br>5）重排序：Cross-encoder / LLM Rerank 精排；<br>6）答案生成：Prompt 拼接 + 来源引用标注 + 幻觉校验 + 流式输出。<br><br>系统能力：支持 Ollama + Qwen3-8B 本地模型完全离线运行，可选云端模型降级，知识库增删改查 + 增量索引更新，多轮对话上下文管理。<br><br>🔨 该项目正在规划中，敬请期待。",
+    "title": "mindvaults — 本地私有知识库问答系统",
+    "desc": "mindvaults 是一个开源、隐私优先的本地 RAG（检索增强生成）知识库问答系统，基于 Next.js 14 + FastAPI + PostgreSQL/pgvector 全栈架构，不依赖第三方 SaaS 服务，支持完全离线运行，数据永不离开用户环境。<br><br>核心架构：<br>1）全透明 RAG Pipeline：意图识别 → 向量检索 → 重排序 → LLM 生成，每一步通过 SSE 进度事件向用户实时可见，告别黑盒检索；<br>2）答案引用溯源：每条回答附带来源文档、原文摘录和相似度评分，点击引用编号即可跳转查看原始出处，杜绝幻觉不可追溯；<br>3）多知识库隔离：支持创建多个知识库，独立管理文档、分块、会话和模型配置，检索可限定单库或跨库全局搜索；<br>4）多格式文档解析：支持 PDF、Word、Markdown、TXT 文件自动解析与向量化，内置 Obsidian 笔记库一键导入，自动提取 YAML frontmatter 属性；<br>5）可插拔模型架构：LLM 和 Embedding 模型独立可配，支持 DeepSeek / OpenAI / SiliconFlow / Ollama 任意组合，无需修改代码即可切换提供商；<br>6）双部署模式：轻量模式 5 容器（云端 API），全栈模式 6 容器（Ollama 本地推理），从 Mac mini 到云服务器均可 Docker Compose 一键部署；<br>7）智能路由与知识蒸馏：三级降级匹配（质心向量 → LLM 路由 → 用户引导）自动选择最佳知识库，LLM 从对话中自动提取知识点经去重审核后沉淀入库；<br>8）概念网络与内容健康：文档导入时自动构建领域概念网络，RAG 上下文注入概念摘要；内容健康中心支持近重复检测、低质量识别、陈旧标记、孤立检测与碎片聚类，提供健康评分与一键清理。<br><br>项目完整覆盖 RAG 系统从文档入库到知识沉淀的全生命周期，可作为企业内部私有知识库的基础设施直接落地。",
     "links": {
-      "github": "开源代码（即将发布）"
+      "github": "开源代码",
+      "techDoc": "技术文档"
     }
   },
   "projects1": {
@@ -106,34 +107,19 @@
     "btnCode": "代码仓库",
     "btnDoc": "在线文档",
     "item1": {
-      "title": "Spring AI Agent Starter",
-      "desc": "基于 Spring Boot 的 AI Agent 快速启动器，封装 LLM 调用、工具注册、任务编排等核心能力，帮助开发者 5 分钟搭建第一个 AI Agent 应用。",
-      "tags": ["Spring Boot", "AI Agent", "Starter", "Auto Configuration"]
+      "title": "Modern MD Editor — AI 驱动 Markdown 编辑器",
+      "desc": "高颜值 Markdown 编辑器 + 社交平台发布工具。支持双栏编辑预览、所见即所得模式、一键复制适配微信公众号/社交平台富文本、Mermaid 图表、LaTeX 公式、PDF/PNG 导出、多主题切换。内置 AI 文本润色、标题生成、摘要提取、图片生成等智能写作辅助功能。Vue 3 + CodeMirror 6 + Spring Boot 3 全栈架构。",
+      "tags": ["Vue 3", "Markdown", "AI Writing", "CodeMirror", "Spring Boot"]
     },
     "item2": {
-      "title": "Java RAG Framework",
-      "desc": "轻量级 Java RAG（检索增强生成）框架，支持多种向量数据库（Milvus/Pinecone/Elasticsearch），提供文档解析、向量化、检索、生成的一站式 RAG 解决方案。",
-      "tags": ["Java", "RAG", "Vector DB", "Embedding", "LLM"]
+      "title": "mindvaults — 本地私有知识库问答系统",
+      "desc": "开源隐私优先的本地 RAG 知识库问答系统。全透明 RAG Pipeline SSE 实时可见，答案带来源追溯+原文摘录+相似度评分。支持多知识库隔离、Obsidian 一键导入、知识蒸馏闭环沉淀、概念网络自动提取、内容健康诊断。Next.js + FastAPI + PostgreSQL/pgvector 技术栈，Docker Compose 一键部署，云端或 Ollama 全本地双模式运行。",
+      "tags": ["TypeScript", "Python", "RAG", "pgvector", "Next.js", "FastAPI"]
     },
     "item3": {
-      "title": "LLM Tool Calling SDK",
-      "desc": "Java 原生 LLM 工具调用 SDK，支持 OpenAI/Claude/DeepSeek 等多种模型，提供工具注册、Schema 自动生成、调用结果解析等功能，让 LLM 与现有业务系统无缝集成。",
-      "tags": ["Java", "LLM", "Tool Calling", "SDK", "Multi-Model"]
-    },
-    "item4": {
       "title": "API Auto Test Framework",
       "desc": "Java 接口自动化测试框架，基于注解驱动，支持 HTTP/gRPC/WebSocket 多协议，集成 AI 断言生成与智能失败重试，适合微服务架构下的接口测试场景。",
       "tags": ["Java", "Testing", "API", "Automation", "gRPC"]
-    },
-    "item5": {
-      "title": "Smart Work Order Engine",
-      "desc": "智能工单引擎核心库，提供可嵌入的工单流程引擎，支持自定义流程编排、条件分支、并行审批与 SLA 管理，内置 AI 驱动的工单分类与推荐能力。",
-      "tags": ["Java", "Workflow", "Engine", "AI", "SLA"]
-    },
-    "item6": {
-      "title": "Code Quality Analyzer",
-      "desc": "Java 代码质量分析工具库，支持 AST 级别的代码检查、圈复杂度分析、代码异味检测与自动修复建议，可集成到 CI/CD 流水线作为质量门禁。",
-      "tags": ["Java", "Code Quality", "AST", "CI/CD", "Static Analysis"]
     }
   },
   "timeline": {
