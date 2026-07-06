@@ -117,9 +117,9 @@
       "tags": ["TypeScript", "Python", "RAG", "pgvector", "Next.js", "FastAPI"]
     },
     "item3": {
-      "title": "API Auto Test Framework",
-      "desc": "An annotation-driven Java API testing framework supporting HTTP, gRPC, and WebSocket protocols. Integrates AI-powered assertion generation and intelligent retry on failure, ideal for microservice testing scenarios.",
-      "tags": ["Java", "Testing", "API", "Automation", "gRPC"]
+      "title": "OfferFlow — AI Interview Preparation OS",
+      "desc": "JD flows in, offers flow out. A full-stack AI interview prep tool covering the complete pipeline: AI resume generation & enhancement → JD structured parsing → resume-JD gap analysis → AI study notes generation → LLM-powered mock interviews (technical/behavioral/mixed/panel). Spring Boot 3.5 + LangChain4j + MyBatis-Plus + Vue 3 + Tailwind CSS full-stack architecture.",
+      "tags": ["Java", "Spring Boot", "LangChain4j", "Vue 3", "AI Agent"]
     }
   },
   "timeline": {
@@ -140,14 +140,9 @@
       "desc": "Worked on o2o aggregate payment business iteration, participated in smart terminal box business upgrades (Qiandaola & Alipay). Developed and maintained the bank payment gateway platform, integrating UnionPay and NUCC payment channels covering express payment, collection, disbursement, contract signing, and refunds. Participated in next-gen platform migration, cryptographic upgrades, and security hardening."
     },
     "event4": {
-      "date": "2026.04 - Present",
-      "title": "AI Agent Learning & Open Source",
-      "desc": "Self-learning LLM, RAG, Agent patterns, and Function Calling. Built 6 Java-native AI Agent projects from scratch, progressively covering NL2SQL, API inspection, work order processing, and code review — documenting the complete Java-to-Agent journey."
-    },
-    "event5": {
-      "date": "2026.05 - Present",
-      "title": "Career Break · AI Agent & Content Creation",
-      "desc": "Deep-diving into AI Agent development during career break. Running the 'Coke 笔记' tech blog, sharing hands-on projects, source code walkthroughs, framework tutorials, interview guides, and Vibe Coding tips."
+      "date": "2025.04 - Present",
+      "title": "AI Agent Learning · Open Source · Content Creation",
+      "desc": "Self-taught LLM, RAG, Agent patterns, and Function Calling during spare time while employed. Built Java-native AI Agent projects from scratch covering NL2SQL, API inspection, work order processing, code review, and multi-agent collaboration. Open-sourced projects including mdeditor-ai, mindvaults, and OfferFlow. Running the 'Coke 笔记' tech blog, sharing hands-on projects, source code walkthroughs, framework tutorials, interview guides, and Vibe Coding tips."
     }
   },
   "skills": {

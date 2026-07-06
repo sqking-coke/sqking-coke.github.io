@@ -117,9 +117,9 @@
       "tags": ["TypeScript", "Python", "RAG", "pgvector", "Next.js", "FastAPI"]
     },
     "item3": {
-      "title": "API Auto Test Framework",
-      "desc": "Java 接口自动化测试框架，基于注解驱动，支持 HTTP/gRPC/WebSocket 多协议，集成 AI 断言生成与智能失败重试，适合微服务架构下的接口测试场景。",
-      "tags": ["Java", "Testing", "API", "Automation", "gRPC"]
+      "title": "OfferFlow — AI 面试准备操作系统",
+      "desc": "JD 流进去，Offer 流出来。全栈 AI 面试准备工具，覆盖 AI 简历生成与增强 → JD 结构化解析 → 简历-JD 差距分析 → AI 学习笔记生成 → LLM 实时模拟面试（技术面/行为面/混合面/面板）完整闭环。Spring Boot 3.5 + LangChain4j + MyBatis-Plus + Vue 3 + Tailwind CSS 全栈架构。",
+      "tags": ["Java", "Spring Boot", "LangChain4j", "Vue 3", "AI Agent"]
     }
   },
   "timeline": {
@@ -140,14 +140,9 @@
       "desc": "负责 o2o 聚合支付业务迭代，参与智能终端盒子业务升级（钱到啦 & 支付宝）；负责金融网络银行网关平台开发与维护，对接银联、网联支付通道，涵盖快捷支付、代收代付、签约、退款等核心能力。参与网关迁移新一代平台、国密改造、安全升级及日常运维优化。"
     },
     "event4": {
-      "date": "2026.04 - 至今",
-      "title": "AI Agent 学习与开源项目",
-      "desc": "业余学习 LLM、RAG、Agent、Function Calling 等技术方向。从零搭建 6 套 Java 原生 AI Agent 实战项目，由浅入深覆盖 NL2SQL、接口巡检、工单处理、代码审查等场景，记录 Java 转 Agent 完整学习路径。"
-    },
-    "event5": {
-      "date": "2026.05 - 至今",
-      "title": "GAP · 专注 AI Agent 与内容输出",
-      "desc": "GAP 期间专注 AI Agent 技术深耕，运营公众号「Coke 笔记」，分享实战项目、源码解析、框架教程、求职面经、Vibe Coding 经验。"
+      "date": "2025.04 - 至今",
+      "title": "AI Agent 学习 · 开源贡献 · 内容输出",
+      "desc": "在职期间利用业余时间系统学习 LLM、RAG、Agent、Function Calling 等 AI 技术方向，从零搭建 Java 原生 AI Agent 实战项目，覆盖 NL2SQL、接口巡检、工单处理、代码审查、多 Agent 协同等场景，并开源 mdeditor-ai、mindvaults、OfferFlow 等项目。运营公众号「Coke 笔记」，分享实战项目、源码解析、框架教程、求职面经、Vibe Coding 经验。"
     }
   },
   "skills": {
